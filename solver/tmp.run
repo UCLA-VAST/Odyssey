@@ -1,0 +1,6 @@
+option solver ipopt;
+reset;
+model ./solver/tmp.mod;
+data ./solver/tmp.dat;
+solve;
+display target,i1,j1,k1,i2,j2,k2;
