@@ -1,13 +1,15 @@
 {
-  "workloads": [
-    {
-      "name": "gemm",
-      "tags": ["gemm"],
-      "params": {
-        "i": 64,
-        "j": 64,
-        "k": 64
-      }
-    }
-  ]
+ "workloads": [
+  {
+   "name": "gemm",
+   "tags": [
+    "gemm"
+   ],
+   "params": {
+    "i": 64,
+    "j": 64,
+    "k": 64
+   }
+  }
+ ]
 }

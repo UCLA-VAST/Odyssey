@@ -39,9 +39,9 @@ for index, row in designs_df.iterrows():
 	#mem_type: 0 FF, 1 LUTRAM, 2 BRAM, 3 URAM, 4 original autoSA, 5 no pragmas
 	for mem_type in range(2, 3):
 		design_name_new = f'{workload}_HLS_{design_name}_mem_{mem_type}_dims_{sa_dims_str}' if target == 'autosa_hls_c' else f'TAPA_{design_name}_mem_{mem_type}_dims_{sa_dims_str}_{workload}'
-		cmd = f'{prj_path}/gen/gen.sh {design_name_new} "{sa_sizes}" {target} {mem_type} {workload} &> {prj_path}/designs/logs/{design_name_new}.log'
+		cmd = f'{prj_path}/gen/gen.sh {design_name_new} "{sa_sizes}" {target} {mem_type} {workload} &> {prj_path}/designs/{workload}/logs/{design_name_new}.log'
 		print('Running command: ', cmd)
 		os.system(cmd)
-		with open(prj_path + f'/designs/orig/{design_name_new}/design_info.csv', 'w') as f:
+		with open(prj_path + f'/designs/{workload}/orig/{design_name_new}/design_info.csv', 'w') as f:
 			print('design_idx,objective,original workload,padded workload,fre,throughput (GFLOP/s),cycles,latency(ms),DSP eff,off-chip bytes,bandwidth (GB/s),CTC,DSPs,BRAMs,PEs,SA_dims,sa_sizes', file=f)
 			print(designs_lines[index+1], file=f)

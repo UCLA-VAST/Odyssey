@@ -3,4 +3,4 @@ reset;
 model ./solver/tmp.mod;
 data ./solver/tmp.dat;
 solve;
-display target,i1,j1,k1,i2,j2,k2;
+display target,i1,o1,r1,c1,i2,o2,r2,c2;

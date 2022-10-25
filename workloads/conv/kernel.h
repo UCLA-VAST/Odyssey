@@ -3,7 +3,7 @@
 #include "math.h"
 
 typedef float data_t;
-#define C 66
+#define C 64
 #define I 16
 #define O 16
 #define P 3

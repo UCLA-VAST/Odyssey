@@ -5,13 +5,13 @@ mem_type=$4
 workload=$5
 design_path=$PRJ_PATH/designs
 
-rm $design_path/orig/$design_name -rf
+rm $design_path/$workload/orig/$design_name -rf
 # rm $design_path/mod/$design_name -rf
 
-mkdir -p $design_path/orig/$design_name/src
-mkdir $design_path/orig/$design_name/latency_est
-mkdir $design_path/orig/$design_name/resource_est
-mkdir $design_path/orig/$design_name/tuning
+mkdir -p $design_path/$workload/orig/$design_name/src
+mkdir $design_path/$workload/orig/$design_name/latency_est
+mkdir $design_path/$workload/orig/$design_name/resource_est
+mkdir $design_path/$workload/orig/$design_name/tuning
 
 # mkdir -p $design_path/mod/$design_name
 # mkdir $design_path/mod/$design_name/latency_est
@@ -31,7 +31,7 @@ mkdir $design_path/orig/$design_name/tuning
 $AUTOSA_ROOT/autosa $PRJ_PATH/workloads/$workload/kernel.c \
   --config=$AUTOSA_ROOT/autosa_config/autosa_config.json \
   --target=$target \
-  --output-dir=$design_path/orig/$design_name \
+  --output-dir=$design_path/$workload/orig/$design_name \
   --simd-info=$PRJ_PATH/workloads/$workload/simd_info.json \
   --host-serialize \
   --hls \
@@ -42,10 +42,10 @@ $AUTOSA_ROOT/autosa $PRJ_PATH/workloads/$workload/kernel.c \
 # if target==autosa_hls_c, else if target==autosa_tapa
 if [ "$target" = "autosa_hls_c" ]; then
   echo "Copying HLS C scripts..."
-  cp -r $PRJ_PATH/scripts/hls/* $design_path/orig/$design_name/
+  cp -r $PRJ_PATH/scripts/hls/* $design_path/$workload/orig/$design_name/
 elif [ "$target" = "autosa_tapa" ]; then
   echo "Copying TAPA scripts..."
-  cp $PRJ_PATH/scripts/tapa/* $design_path/orig/$design_name/
+  cp $PRJ_PATH/scripts/tapa/* $design_path/$workload/orig/$design_name/
 fi
 
 # cp -r $design_path/orig/$design_name $design_path/mod/

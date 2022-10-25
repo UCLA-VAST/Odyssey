@@ -5,7 +5,7 @@ import re
 from math import ceil
 from math import prod
 import importlib
-
+import time
 
 
 prj_path = os.environ["PRJ_PATH"]
@@ -78,9 +78,9 @@ def get_SA_sizes(sa_info, solution, workload):
 	array_part = sa_info['array_part']
 	latency_hiding = sa_info['latency_hiding']
 	simd = sa_info['simd']
-	print(f'array_part: {array_part}')
-	print(f'latency_hiding: {latency_hiding}')
-	print(f'simd: {simd}')
+	# print(f'array_part: {array_part}')
+	# print(f'latency_hiding: {latency_hiding}')
+	# print(f'simd: {simd}')
 	arch_sol = solution['arch_sol']
 	space_time_mapping = sa_info['idx']
 	array_part_sol = [arch_sol[ap] for ap in array_part]
@@ -182,21 +182,41 @@ def print_solution(idx, design, solution, sa_info, objective, workload, csv_file
 # 	copy_design(design, workload)
 # 	sa_info = get_SA_info(design)
 # 	print(sa_info)
-workload = 'mm'
+workload = sys.argv[1]
+problem_size = eval(sys.argv[2])
+problem_dims = [problem_size[key] for key in problem_size.keys()]
+# convert [1, 2, 3] to 1_2_3
+problem_dims_str = '_'.join([str(dim) for dim in problem_dims])
+# quick hack to set the problem size: TODO: fix this
+with open(f'{prj_path}/data/workload/{workload}.json', 'r') as f:
+	workload_info = json.load(f)
+workload_info['workloads'][0]['params'] = problem_size
+with open(f'{prj_path}/data/workload/{workload}.json', 'w') as f:
+	json.dump(workload_info, f, indent=1)
+
 designs = os.listdir(f'{designs_lib_dir}/{workload}')
 designs.sort()
-objectives = ['latency']
+objectives = ['latency', 'off_chip_comm']
 # create csv file for results
 results_file = prj_path + f'/tests/results/{workload}.csv'
 csv_file = open(results_file, 'w')
 print('design_idx,objective,original workload,padded workload,fre,throughput (GFLOP/s),cycles,latency(ms),DSP eff,off-chip bytes,bandwidth (GB/s),CTC,DSPs,BRAMs,PEs,SA_dims,sa_sizes', file=csv_file)
 csv_file.close()
-id = 0
+id = 0 
+outfile = open(f'{prj_path}/tests/results/{workload}_{problem_dims_str}_odyssey.csv', 'w')
+# print('design_idx, cycles, search time', file=outfile)
+total_time_start = time.time()
 for idx in range(len(designs)):
 	for objective in objectives:
-		for trial in range(2):
+		for trial in range(1):
 			id += 1
+			time_start = time.time()
 			run_odyssey(designs[idx], objective, workload)
 			solution = get_solution()
+			time_end = time.time()
+			elapsed_time = time_end - time_start
+			# print(f'{idx}, {solution["cycles"]:.0f}, {elapsed_time:.1f}', file=outfile)
 			sa_info = get_SA_info(designs[idx])
 			print_solution(id, designs[idx], solution, sa_info, objective, workload, csv_file)
+total_time_end = time.time()
+# print(f'Elapsed time: {total_time_end - total_time_start:.2f} seconds', file=outfile)
