@@ -18,131 +18,37 @@ from math import prod
 import importlib
 sys.path.append('../src')
 from design import Design
+from utils import *
 
 
-prj_path = os.environ["PRJ_PATH"]
-designs_lib_dir = prj_path + f'/data/designs_lib'
-designs_dir = prj_path + '/tests/tmp/designs'
-output_dir = prj_path + '/tests/tmp/outputs'
-
-def copy_design(design, workload):
-	os.system(f'cp {designs_lib_dir}/{workload}/{design} {designs_dir}')
-
-def list_split(ori_list, split_num):
-  chunk_size = int(np.ceil(float(len(ori_list)) / split_num))
-  chunks = [ori_list[i: i + min(chunk_size, len(ori_list) - i)] for i in range(0, len(ori_list), chunk_size)]
-  return chunks
-
-def print_solution(idx, design, solution, sa_info, objective, workload, csv_file):
-	file_path = 'tmp/designs/register/' + design.strip('.json')
+def get_solution_info(results, design, workload, problem_size):
+	design_name = design.strip('.json')
+	file_path = 'tmp/designs/register/' + design_name
 	file_path = file_path.replace('/', '.')
-	model = importlib.import_module(file_path)
-	compute_arch_cst = model.compute_arch_cst
-
-	original_workload_size = {}
-	padded_workload_size = {}
-	padding_dims = sa_info['padding_dims']
-	# get elements from dictionary solution['arch_sol'] whose key ends with t1
-	# and store them in t1_dims
-	for dim in solution['arch_sol'].keys():
-		if len(dim) == 1:
-			original_workload_size[dim] = solution['arch_sol'][dim]
-	t1_dims = {k:v for k, v in solution['arch_sol'].items() if k.endswith('t1')}
-	for dim in solution['arch_sol'].keys():
-		if dim in padding_dims:
-			# get key and value from t1_dims if dim is in key
-			t1_dim = [v for k, v in t1_dims.items() if dim in k][0]
-			padded_workload_size[dim] = ceil(solution['arch_sol'][dim]/t1_dim)*t1_dim
-	# for key in original_workload_size.keys():
-	# 	if key not in padded_workload_size.keys():
-	# 		padded_workload_size[key] = original_workload_size[key]
-	# sort padded_workload_size by key
-	padded_workload_size = dict(sorted(padded_workload_size.items()))
-	# sort original_workload_size by key
-	original_workload_size = dict(sorted(original_workload_size.items()))
-	fre = solution['fre']
-	throughput = solution['throughput']
-	cycles = solution['cycles']
-	latency = solution['latency']
-	dsp_eff = solution['dsp_eff']
-	off_chip_bytes = solution['off_chip_bytes']
-	bandwidth = solution['bandwidth']
-	CTC = solution['CTC']
-	DSPs = solution['DSPs']
-	BRAMs = solution['BRAMs']
-	arch = compute_arch_cst(solution['arch_sol'])
-	array_part_mapping = eval(open(f'{prj_path}/tests/{workload}_array_part.csv').readlines()[int(sa_info['idx'])])
-	latency_hiding_mapping = eval(open(f'{prj_path}/tests/{workload}_latency_hiding.csv').readlines()[int(sa_info['idx'])])
-	if len(arch['dims']) == 1:
-		if array_part_mapping[0] not in latency_hiding_mapping:
-			SA_Dims = '"' + str((int(arch['dims'][0])*int(arch['SIMD']), 1)) + '"'
-			PEs = int(arch['dims'][0])*int(arch['SIMD'])
-		else:
-			SA_Dims = '"' + str((int(arch['dims'][0]), int(arch['SIMD']))) + '"'
-			PEs = prod(arch['dims'])
-	elif len(arch['dims']) == 2:
-		if array_part_mapping[1] not in latency_hiding_mapping:
-			SA_Dims = '"' + str((int(arch['dims'][0]), int(arch['dims'][1])*int(arch['SIMD']), 1)) + '"'
-			PEs = int(arch['dims'][0])*int(arch['dims'][1])*int(arch['SIMD'])
-		else:
-			SA_Dims = '"' + str((int(arch['dims'][0]), int(arch['dims'][1]), int(arch['SIMD']))) + '"'
-			PEs = prod(arch['dims'])
-
-	sa_sizes = get_SA_sizes(sa_info, solution, workload)
-	csv_file = open(results_file, 'a')
-	print(f'{design.split(".")[0]}_{idx},', end='', file=csv_file)
-	print(f'{objective},', end='', file=csv_file)
-	print(f'"{original_workload_size}",', end='', file=csv_file)
-	print(f'"{padded_workload_size}",', end='', file=csv_file)
-	print(f'{fre:.0f},', end='', file=csv_file)
-	print(f'{throughput:.2f},', end='', file=csv_file)
-	print(f'{cycles:.0f},', end='', file=csv_file)
-	print(f'{latency:.5f},', end='', file=csv_file)
-	print(f'{dsp_eff:.2f}%,', end='', file=csv_file)
-	print(f'{off_chip_bytes:.0f},', end='', file=csv_file)
-	print(f'{bandwidth:.2f},', end='', file=csv_file)
-	print(f'{CTC:.2f},', end='', file=csv_file)
-	print(f'{DSPs:.0f},', end='', file=csv_file)
-	print(f'{BRAMs:.0f},', end='', file=csv_file)
-	print(f'{PEs:.0f},', end='', file=csv_file)
-	print(f'{SA_Dims},', end='', file=csv_file)
-	print(f'{sa_sizes}', end='', file=csv_file)
-	print(file=csv_file)
-	csv_file.close()
-	return
-
-def get_SA_info(design):
-	with open(f'{designs_dir}/{design}', 'r') as f:
-		all_info = json.load(f)
-	arch_info = all_info['compute']['PE']
-	sa_info = {}
-	sa_info['idx'] = re.split('kernel|_|\.|json', design)[1]
-	sa_info['arch'] = {}
-	sa_info['arch']['dims'] = len(arch_info['dims'])
-	sa_info['arch']['simd'] = arch_info['unroll_factor']
-	if sa_info['arch']['dims'] == 1:
-		sa_info['arch']['sa_length'] = arch_info['dims'][0]
-		sa_info['padding_dims'] = [arch_info['dims'][0][1]]
-	elif sa_info['arch']['dims'] == 2:
-		sa_info['arch']['sa_cols'] = arch_info['dims'][0]
-		sa_info['arch']['sa_rows'] = arch_info['dims'][1]
-		sa_info['padding_dims'] = [arch_info['dims'][0][1], arch_info['dims'][1][1]]
-
-	SA_params = all_info['params']
-	array_part = []
-	latency_hiding = []    
-	simd = []
-	for param in SA_params:
-		if param['attr'] == 'array_part_tiling_factor':
-			array_part.append(param['name'])
-		elif param['attr'] == 'latency_tiling_factor':
-			latency_hiding.append(param['name'])
-		elif param['attr'] == 'SIMD_tiling_factor':
-			simd.append(param['name'])
-	sa_info['array_part'] = array_part
-	sa_info['latency_hiding'] = latency_hiding
-	sa_info['simd'] = simd
-	return sa_info
+	perf_model = importlib.import_module(file_path)
+	dw = 4
+	fre = 300
+	solutions = []
+	for result in results:
+		solution = {}
+		params = result['params']
+		resources = result['resources'][0]
+		cycles = result['cycles'][0]
+		activity = perf_model.est_activity(params)
+		ops = compute_ops(workload, problem_size)
+		solution['arch_sol'] = params
+		solution['DSPs'] = resources['DSP']
+		solution['BRAMs'] = resources['BRAM18K']
+		solution['cycles'] = cycles
+		solution['dsp_eff'] = compute_dsp_eff(cycles, workload, problem_size, resources['DSP'])*100
+		solution['fre'] = fre
+		solution['latency'] = cycles/(fre*1e6)
+		solution['throughput'] = (ops/1e9)/(cycles/(fre*1e6))
+		solution['off_chip_bytes'] = activity['off_chip_acc_num']*4 #bytes
+		solution['bandwidth'] = compute_bw(params, cycles, activity['off_chip_acc_num'], dw, fre)
+		solution['CTC'] = compute_ctc(params, workload, problem_size, activity['off_chip_acc_num'], dw)
+		solutions.append(solution)
+	return solutions
 
 def generate_candidates(design, workload, problem_size):
 	design_name = design.strip('.json')
@@ -198,7 +104,7 @@ def generate_candidates(design, workload, problem_size):
 											params["j_t2"] = j_t2
 											params["k_t2"] = k_t2
 											params = perf_model.infer_params(params)
-											if perf_model.bound_check(params):
+											if not perf_model.bound_check(params):
 												continue
 											candidates.append(params)
 	elif workload == 'conv':
@@ -249,7 +155,7 @@ def generate_candidates(design, workload, problem_size):
 														params["r_t2"] = r_t2
 														params["c_t2"] = c_t2
 														params = perf_model.infer_params(params)
-														if perf_model.bound_check(params):
+														if not perf_model.bound_check(params):
 															continue
 														candidates.append(params)
 	return candidates, perf_model
@@ -265,9 +171,7 @@ def run_latency_search(candidates, resource_limits, design, num_top_results):
 		result = {}
 		result['cycles'] = perf_model.est_latency(params)
 		result['resources'] = perf_model.est_resource(params)
-		result['arch'] = perf_model.compute_arch_cst(params)
 		result['params'] = params
-		result['off_chip_trans'] = perf_model.est_activity(params)['off_chip_acc_num']
 		if result['resources'][0]['DSP'] > resource_limits['DSP'] or result['resources'][0]['BRAM18K'] > resource_limits['BRAM18K']:
 			continue
 
@@ -281,9 +185,9 @@ def run_latency_search(candidates, resource_limits, design, num_top_results):
 					break
 	return top_results
 
-def run(candidates, objective, design, num_top_results):
+def run(candidates, objective, design, workload, problem_size, num_top_results):
 
-	num_processes = 32#int(multiprocessing.cpu_count() * 1)
+	num_processes = int(multiprocessing.cpu_count() * 1)
 
 	print('Parallelizing using %d processes...' % (num_processes))
 
@@ -303,27 +207,25 @@ def run(candidates, objective, design, num_top_results):
 	print('Finished the search!')
 	# flatten the list of lists
 	print('Flattening the list of lists..')
-	results = [item for sublist in results for item in sublist]
+	results = [item for sublist in results for item in sublist if item['cycles'][0] != np.inf]
 	results = sorted(results, key=lambda x: x['cycles'][0])
-	return results[0]
+	results = get_solution_info(results, design, workload, problem_size)
+	return results[:num_top_results]
 
 workload = sys.argv[1]
 problem_size = eval(sys.argv[2])
 problem_dims = [problem_size[key] for key in problem_size.keys()]
 # convert [1, 2, 3] to 1_2_3
 problem_dims_str = '_'.join([str(dim) for dim in problem_dims])
-
 designs = os.listdir(f'{designs_lib_dir}/{workload}')
 designs.sort()
 objectives = ['latency']
 # create csv file for results
-results_file = prj_path + f'/tests/results/{workload}.csv'
+results_file = prj_path + f'/tests/results/{workload}_{problem_dims_str}_search_method_1.csv'
 csv_file = open(results_file, 'w')
-print('design_idx,objective,original workload,padded workload,fre,throughput (GFLOP/s),cycles,latency(ms),DSP eff,off-chip bytes,bandwidth (GB/s),CTC,DSPs,BRAMs,PEs,SA_dims,sa_sizes', file=csv_file)
+print('design_idx,search time (s),objective,original workload,padded workload,fre,throughput (GFLOP/s),cycles,latency(ms),DSP eff,off-chip bytes,bandwidth (GB/s),CTC,DSPs,BRAMs,PEs,SA_dims,sa_sizes', file=csv_file)
 csv_file.close()
 id = 0
-outfile = open(f'{prj_path}/tests/results/{workload}_{problem_dims_str}_search_method_1.csv', 'w')
-print('design_idx, cycles, search time', file=outfile)
 total_time_start = time.time()
 for idx in range(len(designs)):
 	for objective in objectives:
@@ -332,12 +234,11 @@ for idx in range(len(designs)):
 			time_start = time.time()
 			candidates, perf_model = generate_candidates(designs[idx], workload, problem_size)
 			print(f'Generated {len(candidates)} candidates for design {designs[idx]}')
-			solution = run(candidates, objective, designs[idx], 1)
+			solutions = run(candidates, objective, designs[idx], workload, problem_size, 1)
+			solution = solutions[0]
 			time_end = time.time()
 			elapsed_time = time_end - time_start
-			print(f'{idx}, {solution["cycles"][0]:.0f}, {elapsed_time:.1f}', file=outfile)
-
-			# sa_info = get_SA_info(designs[idx])
-			# print_solution(id, designs[idx], solution, sa_info, objective, workload, csv_file)
+			sa_info = get_SA_info(designs[idx])
+			print_solution(id, designs[idx], solution, sa_info, objective, workload, elapsed_time, results_file)
 total_time_end = time.time()
-print(f'Elapsed time: {total_time_end - total_time_start:.2f} seconds', file=outfile)
+# print(f'Elapsed time: {total_time_end - total_time_start:.2f} seconds', file=outfile)

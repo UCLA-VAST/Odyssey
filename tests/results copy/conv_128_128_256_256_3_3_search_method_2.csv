@@ -1,0 +1,2 @@
+design_idx,search time (s),objective,original workload,padded workload,fre,throughput (GFLOP/s),cycles,latency(ms),DSP eff,off-chip bytes,bandwidth (GB/s),CTC,DSPs,BRAMs,PEs,SA_dims,sa_sizes
+kernel5_2_1,877.1,latency,"{'c': 260, 'i': 128, 'o': 128, 'p': 3, 'q': 3, 'r': 256}","{'c': 260, 'o': 128}",300,976.66,5936768,0.01979,97.82%,170983424,8.64,113.04,8320,2608,26,"(2, 13, 64)","{kernel[]->space_time[5];kernel[]->array_part[128, 52, 2, 128];kernel[]->latency[64, 4, 1];kernel[]->simd[3, 3, 64]}"
