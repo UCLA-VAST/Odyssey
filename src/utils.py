@@ -328,7 +328,7 @@ class SearchRecord(object):
                 self.latency = self.reward_meta["latency"]["latency"]
                 self.throughput = self.ops / self.latency
                 self.dsp_eff = tuner.search_task.compute_dsp_eff(self.latency, self.cst["DSP"])
-            elif tuner.search_obj == "latency_off_chip_comm":
+            elif tuner.search_obj == "latency_off_chip":
                 self.latency = self.reward_meta["latency"]["latency"]
                 self.throughput = self.ops / self.latency
                 self.dsp_eff = tuner.search_task.compute_dsp_eff(self.latency, self.cst["DSP"])

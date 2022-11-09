@@ -10,7 +10,7 @@ from search_task import SingleTask, MultiTask
 class ArchExplorer(object):
     """ Architecture explorer.
     """
-    def __init__(self, cst, search_obj, max_epochs, max_time, search_config, designs, workloads):
+    def __init__(self, cst, search_obj, max_epochs, max_time, search_config, designs, workloads, alpha):
         self.cst = cst
         self.search_obj = search_obj
         self.max_epochs = max_epochs
@@ -18,6 +18,8 @@ class ArchExplorer(object):
         self.search_config = search_config
         self.designs = designs
         self.workloads = workloads
+        # alpha: the weight of latency in the objective function
+        self.alpha = alpha
 
     def search(self):
         """ The gateway function to perform architecture search.
@@ -351,7 +353,7 @@ class ArchExplorer(object):
         for i in range(len(design_list)):
             if len(self.workloads) == 1:
                 # Single task workload
-                search_task = SingleTask(design_list[i], workloads[0], self.cst)
+                search_task = SingleTask(design_list[i], workloads[0], self.cst, self.alpha)
                 if search_task_configs:
                     search_task.configs = search_task_configs[0]
                 search_record = self.tune(search_task)

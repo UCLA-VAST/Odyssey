@@ -258,10 +258,10 @@ def off_chip_solver_conv(search_task, cst, prj_path, fixed_params=None, save=0):
 
             for p in ["i", "o", "r", "c"]:
                 f.write(f'subject to c{p}1_cst:\n')
-                f.write('\t{p} = c{p}1*{p}1;\n\n')
+                f.write(f'\t{p} = c{p}1*{p}1;\n\n')
             for p in ["i", "o", "r", "c"]:
                 f.write(f'subject to c{p}2_cst:\n')
-                f.write('\t{p}1 = c{p}2*{p}2;\n\n')                
+                f.write(f'\t{p}1 = c{p}2*{p}2;\n\n')                
             for p in ["i"]:
                 f.write(f'subject to c{p}3_cst:\n')
                 f.write(f'\t{p}2 = c{p}3*2;\n\n') # even number   
@@ -277,7 +277,7 @@ def off_chip_solver_conv(search_task, cst, prj_path, fixed_params=None, save=0):
                 f.write('\to2*r2*c2 >= 8*i2;\n\n') # Only for FP32
             
         with open(f'{tmpdirname}/tmp.dat', 'w') as f:
-            for p in ["i", "o", "r", "c"]:
+            for p in ["i", "o", "r", "c", "p", "q"]:
                 f.write(f'param {p} := {search_task.workload["params"][p]};\n')            
             f.write(f'param dsp_bound := {int(cst.hw_cst["DSP"])};\n')
             f.write(f'param bram_bound := {int(cst.hw_cst["BRAM18K"])};\n')

@@ -1,0 +1,4 @@
+design: kernel0_2.json, # of points: 101423170, elapsed time: 2683.1333549022675 seconds
+design: kernel1_2.json, # of points: 86027789, elapsed time: 2706.134756565094 seconds
+design: kernel2_2.json, # of points: 86027789, elapsed time: 2699.660957098007 seconds
+design: kernel3_2.json, # of points: 1562738, elapsed time: 34.20264482498169 seconds

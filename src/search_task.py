@@ -9,7 +9,7 @@ from design import Design
 class SingleTask(object):
     """ Single workload searching task.
     """
-    def __init__(self, design, workload, hw_cst):
+    def __init__(self, design, workload, hw_cst, alpha):
         self.design = design
         self.workload = workload
 
@@ -21,6 +21,8 @@ class SingleTask(object):
         self.last_fuse = 0 # the last fusion task in the network
         self.use_uram = 0
         self.serialize = 0
+        # alpha: the weight of latency in the objective function
+        self.alpha = alpha
         # Fixed architecture solution
         self.arch_sol = None
         self.arch_cst = None
@@ -425,7 +427,7 @@ class SingleTask(object):
         return arch_cst
 
     def evaluate(self, params, metric="latency"):
-        if metric not in ["latency", "off_chip_comm", "energy", "dsp_num", "latency_off_chip_comm"]:
+        if metric not in ["latency", "off_chip_comm", "energy", "dsp_num", "latency_off_chip"]:
             raise RuntimeError(f"Not supported metric: {metric}")
 
         params = self.design.infer_params(params)
@@ -448,6 +450,19 @@ class SingleTask(object):
 
             # Compute the other activity
             activity = self.design.est_activity(params)
+
+            # compute min latency and min_off_chip
+            DSPs = self.hw_cst.hw_cst['DSP']
+            if 'mm' in self.workload['name']:
+                problem_size = self.workload['params']
+                I, J, K = problem_size['i'], problem_size['j'], problem_size['k']
+                min_latency = I*J*K / (DSPs / 5)
+                min_off_chip = I*J + J*K + I*K
+            elif 'conv' in self.workload['name']:
+                problem_size = self.workload['params']
+                I, O, R, C, P, Q = problem_size['i'], problem_size['o'], problem_size['r'], problem_size['c'], problem_size['p'], problem_size['q']
+                min_latency =  I*O*R*C*P*Q / (DSPs / 5)
+                min_off_chip = I*(R + P - 1)*(C + Q - 1) + O*R*C + I*O*P*Q
 
             if metric == "latency":                
                 if latency:
@@ -473,22 +488,14 @@ class SingleTask(object):
                     return resource["DSP"], resource, {'latency': latency_meta, 'activity': activity}
                 else:
                     return 0, None, None
-            elif metric == 'latency_off_chip_comm':
+            elif metric == 'latency_off_chip':
                 if activity:
                     latency_meta['latency'] = latency
-                    # opt_latency = 1024*1024*1024/(resource["DSP"]/5)
-                    # dsp_eff = opt_latency/latency
-                    # print("opt_latency: ", opt_latency, "latency: ", latency, dsp_eff*100, '%')
-                    min_off_chip_acc_num = 1024*1024*3 #bytes
-                    norm_off_chip_bytes = activity["off_chip_acc_num"]/min_off_chip_acc_num
-                    min_latency = 1024*1024*1024/1720
+                    off_chip_trans = self.est_off_chip_trans(params)
                     norm_latency = latency/min_latency
-                    alpha = 0.01
-                    beta = 0.99
-                    # gamma = 0.33
-                    score = 1 / (alpha*norm_latency + beta*norm_off_chip_bytes)# + gamma*(1/dsp_eff))
+                    norm_off_chip_trans = off_chip_trans/min_off_chip
+                    score = 1 / (self.alpha*norm_latency + (1-self.alpha)*norm_off_chip_trans)
                     return score, resource, {'latency': latency_meta, 'activity': activity}
-                    # return 1 / (latency + activity["off_chip_acc_num"]), resource, {'latency': latency_meta, 'activity': activity}
                 else:
                     return 0, None, None
         else:

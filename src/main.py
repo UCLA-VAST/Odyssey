@@ -18,7 +18,7 @@ if __name__ == "__main__":
     parser.add_argument('--outdir', type=str, default="outdir", help="output directory")
     parser.add_argument('--db', type=str, default="db", help="search database")
     parser.add_argument('--use-db', type=int, default=1, help="use database")
-    parser.add_argument('--objective', type=str, default="latency", help="optimization target [latency, off_chip_comm, energy, dsp_num]")
+    parser.add_argument('--objective', type=str, default="latency", help="optimization target [latency, off_chip_comm, latency_off_chip, energy, dsp_num]")
     parser.add_argument('--cst', type=str, default="hw_cst", help="hardware constraint")
     parser.add_argument('--stop-after-epochs', type=int, default=-1, help="number of epochs of the unit searching task")
     parser.add_argument('--stop-after-time', type=int, default=-1, help="number of epochs of the unit searching task")
@@ -26,6 +26,8 @@ if __name__ == "__main__":
     parser.add_argument('--designs', type=str, default="", help="systolic array design directory")
     parser.add_argument('--design-idx', type=int, default=-1, help="systolic array design index")
     parser.add_argument('--workload', type=str, required=True, help="searching workload")
+    # alpha is the weight of the latency in the objective function
+    parser.add_argument('-a', '--alpha', type=float, default=0.5, help="weight of latency in the objective function")
     # Architecture specific options
     parser.add_argument('--explore-fusion', action="store_true", help="explore layer fusion in a single accelerator")
     parser.add_argument('--explore-multi-acc', action="store_true", help="explore using multiple accelerators")
@@ -140,8 +142,8 @@ if __name__ == "__main__":
             "thres_adjust": args.xgb_thres_adjust
         }
     }    
-
-    explorer = ArchExplorer(cst, search_obj, max_epochs, max_time, search_config, designs, workloads)
+    alpha = args.alpha
+    explorer = ArchExplorer(cst, search_obj, max_epochs, max_time, search_config, designs, workloads, alpha)
     search_record = explorer.search()
 
     # results_csv = f'results.csv'

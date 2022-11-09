@@ -1,0 +1,11 @@
+design: kernel0_2.json, # of points: 347830, elapsed time: 2.0372490882873535 seconds
+design: kernel1_2.json, # of points: 1186838, elapsed time: 6.423230171203613 seconds
+design: kernel2_2.json, # of points: 1186838, elapsed time: 6.241434097290039 seconds
+design: kernel3_2.json, # of points: 115100, elapsed time: 1.0096728801727295 seconds
+design: kernel4_2.json, # of points: 1473177, elapsed time: 12.729943037033081 seconds
+design: kernel5_2.json, # of points: 1473177, elapsed time: 12.561856746673584 seconds
+design: kernel6_2.json, # of points: 128876, elapsed time: 1.5816771984100342 seconds
+design: kernel7_2.json, # of points: 4991772, elapsed time: 39.39740800857544 seconds
+design: kernel8_2.json, # of points: 598238, elapsed time: 5.632764101028442 seconds
+design: kernel9_2.json, # of points: 598238, elapsed time: 5.130681276321411 seconds
+total elapsed time for 12100084 designs: 92.7477638721466 seconds

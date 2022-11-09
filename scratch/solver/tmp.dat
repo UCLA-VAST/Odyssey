@@ -1,0 +1,7 @@
+param i := 1024;
+param o := 1024;
+param r := 1024;
+param c := 1024;
+param dsp_bound := 8601;
+param bram_bound := 3763;
+param data_w := 32;
