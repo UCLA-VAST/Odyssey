@@ -1,0 +1,6 @@
+option solver ipopt;
+reset;
+model /home/suhailb/Projects/odyssey/solvers/conv/tmp.mod;
+data /home/suhailb/Projects/odyssey/solvers/conv/tmp.dat;
+solve;
+display target,i1,o1,r1,c1,i2,o2,r2,c2;

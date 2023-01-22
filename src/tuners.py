@@ -1098,13 +1098,14 @@ def genetic_search(search_task, cst, search_obj, max_epochs, max_time, solver=1,
         repeat_num = 1
 
     init_params = None
-    #solver = 0
+    # solver = 1
     if solver == 1:
+        print('Calling IPOPT Solver')
         # Call IPOPT solver
         init_params = off_chip_solver(search_task, cst, fixed_params, save=1)
-        #init_params = off_chip_solver(search_task, cst, fixed_params)
+        # init_params = off_chip_solver(search_task, cst, fixed_params)
     #print(search_task)
-    #print(init_params)
+    print(init_params)
     
     if init_params:
         # Modify it to divisors
@@ -1141,9 +1142,9 @@ def genetic_search(search_task, cst, search_obj, max_epochs, max_time, solver=1,
 
         # Fix the first-level: make them multiple of 2
         for p, param in search_task.design.params_config["external"].items():
-            split_by_param = param["split_by"]            
-            task_params[split_by_param] = int(task_params[split_by_param] / 2) * 2
-
+            if p != 'p' and p != 'q':
+                split_by_param = param["split_by"]            
+                task_params[split_by_param] = int(task_params[split_by_param] / 2) * 2
         # Fix the second-level    
         def filter_non_power_of_two(x):
             if np.log2(x) != int(np.log2(x)):
@@ -1425,12 +1426,14 @@ class GeneticTuner(Tuner):
             task_params = {}
             idx = 0
             for p, param in self.search_task.design.params_config["external"].items():
-                task_params[param["split_by"]] = ancestor[idx]
-                idx += 1
+                if p != 'p' and p != 'q':
+                    task_params[param["split_by"]] = ancestor[idx]
+                    idx += 1
             # Note: We assume only up to two-level tiling
             for p, param in self.search_task.design.params_config["external"].items():
-                task_params[self.search_task.design.params_config["tunable"][param["split_by"]]["split_by"]] = ancestor[idx]
-                idx += 1
+                if p != 'p' and p != 'q':
+                    task_params[self.search_task.design.params_config["tunable"][param["split_by"]]["split_by"]] = ancestor[idx]
+                    idx += 1
             #print(task_params)
             task_params = self.search_task.adjust_params(task_params)
             #print(task_params)

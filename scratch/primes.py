@@ -16,45 +16,45 @@ def get_all_factors(n):
   return factors
 
 
-def get_sorted_padded_candidates(n, limit):
-  candidates = [x for x in range(1,limit)]
+def get_sorted_padded_candidates(n):
+  candidates = [x for x in range(1,n)]
   padded_sizes = []
   for i in candidates:
     padded_size = ceil(n/i)*i
     # print(i, padded_size)
     padded_sizes.append(padded_size)
   return list(set(padded_sizes))
-import math
-def isPrime(n):
-  if n == 2:
-    return True
-  if n % 2 == 0 or n <= 1:
-    return False
-  sqr = int(math.sqrt(n)) + 1
-  for divisor in range(3, sqr, 2):
-    if n % divisor == 0:
-      return False
-  return True
-divisor_candidates = get_sorted_padded_candidates(1024, 1024)
-all_candidates = get_sorted_padded_candidates(1024, 2*1024-1)
-other_candidates = [x for x in all_candidates if x not in divisor_candidates]
-print(len(divisor_candidates))
-print(len(all_candidates))
-print(len(other_candidates))
-# for i in other_candidates:
-#   print(i, isPrime(i))
-import numpy as np
-import pandas as pd
-# df = open('mm_1024.csv', 'r')
-df = pd.read_csv('all.csv')
-# get padded workload column
-padded_workload = df['padded workload']
-for pw in padded_workload:
-  pw = eval(pw)
-  if pw['i'] not in divisor_candidates:
-    print('Error: i not in candidates')
-    break
-exit()
+# import math
+# def isPrime(n):
+#   if n == 2:
+#     return True
+#   if n % 2 == 0 or n <= 1:
+#     return False
+#   sqr = int(math.sqrt(n)) + 1
+#   for divisor in range(3, sqr, 2):
+#     if n % divisor == 0:
+#       return False
+#   return True
+# divisor_candidates = get_sorted_padded_candidates(1024, 1024)
+# all_candidates = get_sorted_padded_candidates(1024, 2*1024-1)
+# other_candidates = [x for x in all_candidates if x not in divisor_candidates]
+# print(len(divisor_candidates))
+# print(len(all_candidates))
+# print(len(other_candidates))
+# # for i in other_candidates:
+# #   print(i, isPrime(i))
+# import numpy as np
+# import pandas as pd
+# # df = open('mm_1024.csv', 'r')
+# df = pd.read_csv('all.csv')
+# # get padded workload column
+# padded_workload = df['padded workload']
+# for pw in padded_workload:
+#   pw = eval(pw)
+#   if pw['i'] not in divisor_candidates:
+#     print('Error: i not in candidates')
+#     break
+# exit()
 # 16, 16, 16, 4, 2, 8, 4, 1, 4
 # 18, 20, 16, 3, 5, 8, 3, 1, 8
 # 17, 25, 16, 17, 5, 8, 17, 5, 4
@@ -112,9 +112,15 @@ from math import ceil, log2
 
 design_points = []
 I, J, K = 16, 16, 16
-i_t1_candidates = [x for x in range(1, 2*I)]
-j_t1_candidates = [x for x in range(1, 2*J)]
-k_t1_candidates = [x for x in range(1, 2*K) if (log2(x) == int(log2(x)))]
+i_t0_candidates = get_sorted_padded_candidates(I)
+j_t0_candidates = get_sorted_padded_candidates(J)
+k_t0_candidates = [K]
+i_t1_candidates = [x for x in range(1, I)]
+j_t1_candidates = [x for x in range(1, J)]
+k_t1_candidates = [x for x in range(1, K) if (log2(x) == int(log2(x)))]
+i_t1_candidates = i_t1_candidates + i_t0_candidates
+j_t1_candidates = j_t1_candidates + j_t0_candidates
+k_t1_candidates = k_t1_candidates + k_t0_candidates
 for i_t1 in i_t1_candidates:
   i_t0 = ceil(I/i_t1)*i_t1
   i_t2_candidates = [x for x in range(1, i_t1+1) if i_t1 % x == 0]

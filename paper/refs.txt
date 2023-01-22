@@ -1,0 +1,621 @@
+@incollection{MKL,
+  title={Intel math kernel library},
+  author={Wang, Endong and Zhang, Qing and Shen, Bo and Zhang, Guangyong and Lu, Xiaowei and Wu, Qing and Wang, Yajuan},
+  booktitle={High-Performance Computing on the Intel{\textregistered} Xeon Phi™},
+  pages={167--188},
+  year={2014},
+  publisher={Springer}
+}
+
+@article{cudnn,
+  title={cudnn: Efficient primitives for deep learning},
+  author={Chetlur, Sharan and Woolley, Cliff and Vandermersch, Philippe and Cohen, Jonathan and Tran, John and Catanzaro, Bryan and Shelhamer, Evan},
+  journal={arXiv preprint arXiv:1410.0759},
+  year={2014}
+}
+
+@article{halide,
+  title={Halide: a language and compiler for optimizing parallelism, locality, and recomputation in image processing pipelines},
+  author={Ragan-Kelley, Jonathan and Barnes, Connelly and Adams, Andrew and Paris, Sylvain and Durand, Fr{\'e}do and Amarasinghe, Saman},
+  journal={Acm Sigplan Notices},
+  volume={48},
+  number={6},
+  pages={519--530},
+  year={2013},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{ansor,
+  title={Ansor: Generating high-performance tensor programs for deep learning},
+  author={Zheng, Lianmin and Jia, Chengfan and Sun, Minmin and Wu, Zhao and Yu, Cody Hao and Haj-Ali, Ameer and Wang, Yida and Yang, Jun and Zhuo, Danyang and Sen, Koushik and others},
+  booktitle={14th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI} 20)},
+  pages={863--879},
+  year={2020}
+}
+
+@inproceedings{tvm,
+  title={{TVM}: An automated end-to-end optimizing compiler for deep learning},
+  author={Chen, Tianqi and Moreau, Thierry and Jiang, Ziheng and Zheng, Lianmin and Yan, Eddie and Shen, Haichen and Cowan, Meghan and Wang, Leyuan and Hu, Yuwei and Ceze, Luis and others},
+  booktitle={13th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI} 18)},
+  pages={578--594},
+  year={2018}
+}
+
+@article{autotvm,
+  title={Learning to optimize tensor programs},
+  author={Chen, Tianqi and Zheng, Lianmin and Yan, Eddie and Jiang, Ziheng and Moreau, Thierry and Ceze, Luis and Guestrin, Carlos and Krishnamurthy, Arvind},
+  journal={arXiv preprint arXiv:1805.08166},
+  year={2018}
+}
+
+@inproceedings{timeloop,
+  title={Timeloop: A systematic approach to {DNN} accelerator evaluation},
+  author={Parashar, Angshuman and Raina, Priyanka and Shao, Yakun Sophia and Chen, Yu-Hsin and Ying, Victor A and Mukkara, Anurag and Venkatesan, Rangharajan and Khailany, Brucek and Keckler, Stephen W and Emer, Joel},
+  booktitle={2019 IEEE international symposium on performance analysis of systems and software (ISPASS)},
+  pages={304--315},
+  year={2019},
+  organization={IEEE}
+}
+
+@article{tenet,
+  title={{TENET}: A Framework for Modeling Tensor Dataflow Based on Relation-centric Notation},
+  author={Lu, Liqiang and Guan, Naiqing and Wang, Yuyue and Jia, Liancheng and Luo, Zizhang and Yin, Jieming and Cong, Jason and Liang, Yun},
+  journal={arXiv preprint arXiv:2105.01892},
+  year={2021}
+}
+
+@article{dmazerunner,
+  title={Dmazerunner: Executing perfectly nested loops on dataflow accelerators},
+  author={Dave, Shail and Kim, Youngbin and Avancha, Sasikanth and Lee, Kyoungwoo and Shrivastava, Aviral},
+  journal={ACM Transactions on Embedded Computing Systems (TECS)},
+  volume={18},
+  number={5s},
+  pages={1--27},
+  year={2019},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{interstellar,
+  title={Interstellar: Using {Halide}'s Scheduling Language to Analyze {DNN} Accelerators},
+  author={Yang, Xuan and Gao, Mingyu and Liu, Qiaoyi and Setter, Jeff and Pu, Jing and Nayak, Ankita and Bell, Steven and Cao, Kaidi and Ha, Heonjae and Raina, Priyanka and others},
+  booktitle={Proceedings of the Twenty-Fifth International Conference on Architectural Support for Programming Languages and Operating Systems},
+  pages={369--383},
+  year={2020}
+}
+
+@article{marvel,
+  title={Marvel: A Data-centric Compiler for {DNN} Operators on Spatial Accelerators},
+  author={Chatarasi, Prasanth and Kwon, Hyoukjun and Raina, Natesh and Malik, Saurabh and Haridas, Vaisakh and Parashar, Angshuman and Pellauer, Michael and Krishna, Tushar and Sarkar, Vivek},
+  journal={arXiv preprint arXiv:2002.07752},
+  year={2020}
+}
+
+@inproceedings{confuciux,
+  title={Confuciu{X}: Autonomous Hardware Resource Assignment for {DNN} Accelerators using Reinforcement Learning},
+  author={Kao, Sheng-Chun and Jeong, Geonhwa and Krishna, Tushar},
+  booktitle={2020 53rd Annual IEEE/ACM International Symposium on Microarchitecture (MICRO)},
+  pages={622--636},
+  year={2020},
+  organization={IEEE}
+}
+
+@inproceedings{gamma,
+  title={GAMMA: Automating the {HW} mapping of {DNN} models on accelerators via genetic algorithm},
+  author={Kao, Sheng-Chun and Krishna, Tushar},
+  booktitle={2020 IEEE/ACM International Conference On Computer Aided Design (ICCAD)},
+  pages={1--9},
+  year={2020},
+  organization={IEEE}
+}
+
+@article{cosa,
+  title={{CoSA}: Scheduling by Constrained Optimization for Spatial Accelerators},
+  author={Huang, Qijing and Kang, Minwoo and Dinh, Grace and Norell, Thomas and Kalaiah, Aravind and Demmel, James and Wawrzynek, John and Shao, Yakun Sophia},
+  journal={arXiv preprint arXiv:2105.01898},
+  year={2021}
+}
+
+@inproceedings{analytical_cnn,
+  title={Analytical characterization and design space exploration for optimization of {CNNs}},
+  author={Li, Rui and Xu, Yufan and Sukumaran-Rajam, Aravind and Rountev, Atanas and Sadayappan, P},
+  booktitle={Proceedings of the 26th ACM International Conference on Architectural Support for Programming Languages and Operating Systems},
+  pages={928--942},
+  year={2021}
+}
+
+@inproceedings{david_bayesian,
+  title={A case for efficient accelerator design space exploration via {Bayesian} optimization},
+  author={Reagen, Brandon and Hern{\'a}ndez-Lobato, Jos{\'e} Miguel and Adolf, Robert and Gelbart, Michael and Whatmough, Paul and Wei, Gu-Yeon and Brooks, David},
+  booktitle={2017 IEEE/ACM International Symposium on Low Power Electronics and Design (ISLPED)},
+  pages={1--6},
+  year={2017},
+  organization={IEEE}
+}
+
+@inproceedings{xuechao_sa,
+  title={Automated systolic array architecture synthesis for high throughput {CNN} inference on {FPGAs}},
+  author={Wei, Xuechao and Yu, Cody Hao and Zhang, Peng and Chen, Youxiang and Wang, Yuxin and Hu, Han and Liang, Yun and Cong, Jason},
+  booktitle={Proceedings of the 54th Annual Design Automation Conference 2017},
+  pages={1--6},
+  year={2017}
+}
+
+@inproceedings{autosa,
+  title={{AutoSA}: A Polyhedral Compiler for High-Performance Systolic Arrays on {FPGA}},
+  author={Wang, Jie and Guo, Licheng and Cong, Jason},
+  booktitle={Proceedings of the 2021 ACM/SIGDA international symposium on Field-programmable gate arrays},
+  year={2021}
+}
+
+@inproceedings{analytical_tc,
+  title={Analytical cache modeling and tilesize optimization for tensor contractions},
+  author={Li, Rui and Sukumaran-Rajam, Aravind and Veras, Richard and Low, Tze Meng and Rastello, Fabrice and Rountev, Atanas and Sadayappan, Ponnuswamy},
+  booktitle={Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+  pages={1--13},
+  year={2019}
+}
+
+@incollection{ampl,
+  title={The {AMPL} modeling language: An aid to formulating and solving optimization problems},
+  author={Gay, David M},
+  booktitle={Numerical analysis and optimization},
+  pages={95--116},
+  year={2015},
+  publisher={Springer}
+}
+
+@misc{ipopt,
+author = {COIN-OR},
+title = {Interior Point Optimizer},
+year = {2021},
+url = {https://coin-or.github.io/Ipopt/}
+}
+
+@article{maestro,
+  title={Maestro: A data-centric approach to understand reuse, performance, and hardware cost of {DNN} mappings},
+  author={Kwon, Hyoukjun and Chatarasi, Prasanth and Sarkar, Vivek and Krishna, Tushar and Pellauer, Michael and Parashar, Angshuman},
+  journal={IEEE micro},
+  volume={40},
+  number={3},
+  pages={20--29},
+  year={2020},
+  publisher={IEEE}
+}
+
+@inproceedings{isl,
+  title={isl: An integer set library for the polyhedral model},
+  author={Verdoolaege, Sven},
+  booktitle={International Congress on Mathematical Software},
+  pages={299--302},
+  year={2010},
+  organization={Springer}
+}
+
+@inproceedings{dsagen,
+  title={DSAGEN: Synthesizing programmable spatial accelerators},
+  author={Weng, Jian and Liu, Sihao and Dadu, Vidushi and Wang, Zhengrong and Shah, Preyas and Nowatzki, Tony},
+  booktitle={2020 ACM/IEEE 47th Annual International Symposium on Computer Architecture (ISCA)},
+  pages={268--281},
+  year={2020},
+  organization={IEEE}
+}
+
+@inproceedings{hypermapper,
+  title={HyperMapper: a Practical Design Space Exploration Framework},
+  author={Nardi, Luigi and Souza, Artur and Koeplinger, David and Olukotun, Kunle},
+  booktitle={2019 IEEE 27th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)},
+  pages={425--426},
+  year={2019},
+  organization={IEEE}
+}
+
+@inproceedings{gaussian,
+  title={Gaussian processes in machine learning},
+  author={Rasmussen, Carl Edward},
+  booktitle={Summer school on machine learning},
+  pages={63--71},
+  year={2003},
+  organization={Springer}
+}
+
+@inproceedings{reinforce,
+  title={Policy gradient methods for reinforcement learning with function approximation},
+  author={Sutton, Richard S and McAllester, David A and Singh, Satinder P and Mansour, Yishay},
+  booktitle={Advances in neural information processing systems},
+  pages={1057--1063},
+  year={2000}
+}
+
+@article{annealing,
+  title={Optimization by simulated annealing},
+  author={Kirkpatrick, Scott and Gelatt, C Daniel and Vecchi, Mario P},
+  journal={science},
+  volume={220},
+  number={4598},
+  pages={671--680},
+  year={1983},
+  publisher={American association for the advancement of science}
+}
+
+@article{shi_hardware,
+  title={Hardware/software co-exploration of neural architectures},
+  author={Jiang, Weiwen and Yang, Lei and Sha, Edwin Hsing-Mean and Zhuge, Qingfeng and Gu, Shouzhen and Dasgupta, Sakyasingha and Shi, Yiyu and Hu, Jingtong},
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems},
+  volume={39},
+  number={12},
+  pages={4805--4815},
+  year={2020},
+  publisher={IEEE}
+}
+
+@misc{confuciux_github,
+author = {Sheng{-}Chun Kao and Geonhwa Jeong and Tushar Krishna},
+title = {Confuciu{X}},
+year = {2021},
+howpublished = {\url{https://github.com/maestro-project/confuciux}}
+}
+
+@misc{opentuner_github,
+  author = {Ansel, Jason and Kamil, Shoaib and Veeramachaneni, Kalyan and Ragan-Kelley, Jonathan and Bosboom, Jeffrey and O'Reilly, Una-May and Amarasinghe, Saman},
+  title = {{OpenTuner}},
+  year = {2021},
+  howpublished = {\url{https://github.com/jansel/opentuner}},
+}
+
+@article{zoph2016neural,
+  title={Neural architecture search with reinforcement learning},
+  author={Zoph, Barret and Le, Quoc V},
+  journal={arXiv preprint arXiv:1611.01578},
+  year={2016}
+}
+
+@inproceedings{opentuner,
+  title={{OpenTuner}: An extensible framework for program autotuning},
+  author={Ansel, Jason and Kamil, Shoaib and Veeramachaneni, Kalyan and Ragan-Kelley, Jonathan and Bosboom, Jeffrey and O'Reilly, Una-May and Amarasinghe, Saman},
+  booktitle={Proceedings of the 23rd international conference on Parallel architectures and compilation},
+  pages={303--316},
+  year={2014}
+}
+
+@article{genetic,
+  title={Genetic algorithms},
+  author={Holland, John H},
+  journal={Scientific American},
+  volume={267},
+  number={1},
+  pages={66--73},
+  year={1992},
+  publisher={JSTOR}
+}
+
+@article{tc,
+  title={The Next 700 Accelerated Layers: From Mathematical Expressions of Network Computation Graphs to Accelerated {GPU} Kernels, Automatically},
+  author={Vasilache, Nicolas and Zinenko, Oleksandr and Theodoridis, Theodoros and Goyal, Priya and Devito, Zachary and Moses, William S and Verdoolaege, Sven and Adams, Andrew and Cohen, Albert},
+  journal={ACM Transactions on Architecture and Code Optimization (TACO)},
+  volume={16},
+  number={4},
+  pages={1--26},
+  year={2019},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{chen_communication,
+  title={Communication lower bound in convolution accelerators},
+  author={Chen, Xiaoming and Han, Yinhe and Wang, Yu},
+  booktitle={2020 IEEE International Symposium on High Performance Computer Architecture (HPCA)},
+  pages={529--541},
+  year={2020},
+  organization={IEEE}
+}
+
+@misc{python_annealing,
+  title={Basin-hopping package},
+  author={Scipy},
+  year={2021},
+  howpublished={\url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.basinhopping.html}}
+}
+
+@Misc{python_bayesian,
+    author = {Fernando Nogueira},
+    title = {{Bayesian Optimization}: Open source constrained global optimization tool for {Python}},
+    year = {2014},
+    howpublished = {\url{https://github.com/fmfn/BayesianOptimization}}
+}
+
+@article{eyeriss,
+  title={Eyeriss: A spatial architecture for energy-efficient dataflow for convolutional neural networks},
+  author={Chen, Yu-Hsin and Emer, Joel and Sze, Vivienne},
+  journal={ACM SIGARCH Computer Architecture News},
+  volume={44},
+  number={3},
+  pages={367--379},
+  year={2016},
+  publisher={ACM New York, NY, USA}
+}
+
+@book{patterson1990computer,
+  title={Computer architecture: a quantitative approach},
+  author={Patterson, David A and Hennessy, John L and Goldberg, David},
+  volume={2},
+  year={1990},
+  publisher={Morgan Kaufmann San Mateo, CA}
+}
+
+@article{vgg,
+  title={Very deep convolutional networks for large-scale image recognition},
+  author={Simonyan, Karen and Zisserman, Andrew},
+  journal={arXiv preprint arXiv:1409.1556},
+  year={2014}
+}
+
+@article{halide_beam,
+  title={Learning to optimize halide with tree search and random programs},
+  author={Adams, Andrew and Ma, Karima and Anderson, Luke and Baghdadi, Riyadh and Li, Tzu-Mao and Gharbi, Micha{\"e}l and Steiner, Benoit and Johnson, Steven and Fatahalian, Kayvon and Durand, Fr{\'e}do and others},
+  journal={ACM Transactions on Graphics (TOG)},
+  volume={38},
+  number={4},
+  pages={1--12},
+  year={2019},
+  publisher={ACM New York, NY, USA}
+}
+
+@Misc {xilinx_hls,
+author       = {Xilinx},
+title        = {Vivado High-Level Synthesis},
+howpublished          = {\url{https://www.xilinx.com/products/design-tools/vivado/integration/esl-design.html}},
+year         = {2021},
+}
+
+% Uday PPoPP
+@inproceedings{uday_ppopp,
+  title={Automatic mapping of nested loops to {FPGAs}},
+  author={Bondhugula, Uday and Ramanujam, Jagannathan and Sadayappan, Ponnuswamy},
+  booktitle={Proceedings of the 12th ACM SIGPLAN symposium on Principles and practice of parallel programming},
+  pages={101--111},
+  year={2007}
+}
+
+% Susy
+@inproceedings{susy,
+  title={{SuSy}: A Programming Model for Productive Construction of High-Performance Systolic Arrays on {FPGAs}},
+  author={Lai, Yi-Hsiang and Rong, Hongbo and Zheng, Size and Zhang, Weihao and Cui, Xiuping and Jia, Yunshan and Wang, Jie and Sullivan, Brendan and Zhang, Zhiru and Liang, Yun and Cong, Jason and George, Nithin and Alvarez, Jose and Hughes, Christopher and Dubey, Pradeep},
+  booktitle={2020 IEEE/ACM International Conference on Computer-Aided Design (ICCAD)},
+  year={2020}
+}
+
+% PolySA
+@inproceedings{polysa,
+  title={{PolySA}: Polyhedral-based systolic array auto-compilation},
+  author={Cong, Jason and Wang, Jie},
+  booktitle={2018 IEEE/ACM International Conference on Computer-Aided Design (ICCAD)},
+  pages={1--8},
+  year={2018},
+  organization={IEEE}
+}
+
+% T2S-tensor
+@inproceedings{t2s_tensor,
+  title={T2S-{T}ensor: Productively generating high-performance spatial hardware for dense tensor computations},
+  author={Srivastava, Nitish and Rong, Hongbo and Barua, Prithayan and Feng, Guanyu and Cao, Huanqi and Zhang, Zhiru and Albonesi, David and Sarkar, Vivek and Chen, Wenguang and Petersen, Paul and others},
+  booktitle={2019 IEEE 27th Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM)},
+  pages={181--189},
+  year={2019},
+  organization={IEEE}
+}
+
+% SYKung
+@article{sykung,
+  title={{VLSI} array processors},
+  author={Kung, Sun Yuan},
+  journal={ph},
+  year={1988}
+}
+
+% Quinton book chapter
+@article{quinton_book,
+  title={Advanced systolic design},
+  author={Lavenier, Dominique and Quinton, Patrice and Rajopadhye, Sanjay},
+  journal={Digital Signal Processing for Multimedia Systems},
+  pages={657--692},
+  year={1999},
+  publisher={Citeseer}
+}
+
+% lam
+@inproceedings{lam,
+  title={Maximizing parallelism and minimizing synchronization with affine transforms},
+  author={Lim, Amy W and Lam, Monica S},
+  booktitle={Proceedings of the 24th ACM SIGPLAN-SIGACT symposium on Principles of programming languages},
+  pages={201--214},
+  year={1997}
+}
+
+% systolic_pku
+@article{systolic_pku,
+  title={Generating Systolic Array Accelerators With Reusable Blocks},
+  author={Jia, Liancheng and Lu, Liqiang and Wei, Xuechao and Liang, Yun},
+  journal={IEEE {Micro}},
+  volume={40},
+  number={4},
+  pages={85--92},
+  year={2020},
+  publisher={IEEE}
+}
+
+% ETH-systolic-array
+@inproceedings{eth_systolic_array,
+  title={Flexible Communication Avoiding Matrix Multiplication on FPGA with High-Level Synthesis},
+  author={de Fine Licht, Johannes and Kwasniewski, Grzegorz and Hoefler, Torsten},
+  booktitle={The 2020 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays},
+  pages={244--254},
+  year={2020}
+}
+
+% MMAlpha
+@article{mmalpha,
+  title={Hardware design methodology with the {Alpha} language},
+  author={Guillou, Anne-Claire and Quiller{\'e}, Fabien and Quinton, Patrice and Rajopadhye, S and Risset, Tanguy},
+  journal={FDL’01},
+  year={2001}
+}
+
+@inproceedings{calyx,
+  title={A compiler infrastructure for accelerator generators},
+  author={Nigam, Rachit and Thomas, Samuel and Li, Zhijing and Sampson, Adrian},
+  booktitle={Proceedings of the 26th ACM International Conference on Architectural Support for Programming Languages and Operating Systems},
+  pages={804--817},
+  year={2021}
+}
+
+% Gemmini
+@article{gemmini,
+  title={Gemmini: An Agile Systolic Array Generator Enabling Systematic Evaluations of Deep-Learning Architectures},
+  author={Genc, Hasan and Haj-Ali, Ameer and Iyer, Vighnesh and Amid, Alon and Mao, Howard and Wright, John and Schmidt, Colin and Zhao, Jerry and Ou, Albert and Banister, Max and others},
+  journal={arXiv preprint arXiv:1911.09925},
+  year={2019}
+}
+
+@inproceedings{pluto,
+  title={A practical automatic polyhedral parallelizer and locality optimizer},
+  author={Bondhugula, Uday and Hartono, Albert and Ramanujam, Jagannathan and Sadayappan, Ponnuswamy},
+  booktitle={Proceedings of the 29th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+  pages={101--113},
+  year={2008}
+}
+
+@article{pouchet2011loop,
+  title={Loop transformations: convexity, pruning and optimization},
+  author={Pouchet, Louis-No{\"e}l and Bondhugula, Uday and Bastoul, C{\'e}dric and Cohen, Albert and Ramanujam, Jagannathan and Sadayappan, Ponnuswamy and Vasilache, Nicolas},
+  journal={ACM SIGPLAN Notices},
+  volume={46},
+  number={1},
+  pages={549--562},
+  year={2011},
+  publisher={ACM New York, NY, USA}
+}
+
+% schedule tree
+@inproceedings{schedule_tree,
+  title={Schedule trees},
+  author={Verdoolaege, Sven and Guelton, Serge and Grosser, Tobias and Cohen, Albert},
+  booktitle={International Workshop on Polyhedral Compilation Techniques, Date: 2014/01/20-2014/01/20, Location: Vienna, Austria},
+  year={2014}
+}
+
+@inproceedings{tpu,
+  title={In-datacenter performance analysis of a tensor processing unit},
+  author={Jouppi, Norman P and Young, Cliff and Patil, Nishant and Patterson, David and Agrawal, Gaurav and Bajwa, Raminder and Bates, Sarah and Bhatia, Suresh and Boden, Nan and Borchers, Al and others},
+  booktitle={Proceedings of the 44th annual international symposium on computer architecture},
+  pages={1--12},
+  year={2017}
+}
+
+% AWS
+@misc{aws,
+  title={AWS Inferentia},
+  author={Amazon},
+  year={2020},
+  url={https://aws.amazon.com/machine-learning/inferentia}
+}
+
+@misc{tpuv4,
+author = {Google Cloud},
+title = {Google demonstrates leading performance in latest MLPerf Benchmarks},
+year = {2021},
+url = {https://cloud.google.com/blog/products/ai-machine-learning/google-wins-mlperf-benchmarks-with-tpu-v4}
+}
+
+@inproceedings{resnet,
+  title={Deep residual learning for image recognition},
+  author={He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={770--778},
+  year={2016}
+}
+
+@inproceedings{tgpa,
+  title={{TGPA}: Tile-grained pipeline architecture for low latency {CNN} inference},
+  author={Wei, Xuechao and Liang, Yun and Li, Xiuhong and Yu, Cody Hao and Zhang, Peng and Cong, Jason},
+  booktitle={Proceedings of the International Conference on Computer-Aided Design},
+  pages={1--8},
+  year={2018}
+}
+
+@inproceedings{dnnexplorer,
+  title={{DNNExplorer}: A framework for modeling and exploring a novel paradigm of {FPGA}-based {DNN} accelerator},
+  author={Zhang, Xiaofan and Ye, Hanchen and Wang, Junsong and Lin, Yonghua and Xiong, Jinjun and Hwu, Wen-mei and Chen, Deming},
+  booktitle={Proceedings of the 39th International Conference on Computer-Aided Design},
+  pages={1--9},
+  year={2020}
+}
+
+@inproceedings{dnnbuilder,
+  title={Dnnbuilder: An automated tool for building high-performance {DNN} hardware accelerators for fpgas},
+  author={Zhang, Xiaofan and Wang, Junsong and Zhu, Chao and Lin, Yonghua and Xiong, Jinjun and Hwu, Wen-mei and Chen, Deming},
+  booktitle={2018 IEEE/ACM International Conference on Computer-Aided Design (ICCAD)},
+  pages={1--8},
+  year={2018},
+  organization={IEEE}
+}
+
+@inproceedings{herald,
+  title={Heterogeneous Dataflow Accelerators for Multi-{DNN} Workloads},
+  author={Kwon, Hyoukjun and Lai, Liangzhen and Pellauer, Michael and Krishna, Tushar and Chen, Yu-Hsin and Chandra, Vikas},
+  booktitle={2021 IEEE International Symposium on High-Performance Computer Architecture (HPCA)},
+  pages={71--83},
+  year={2021},
+  organization={IEEE}
+}
+
+@inproceedings{shenmaximizing,
+  title={Maximizing {CNN} accelerator efficiency through resource partitioning},
+  author={Shen, Yongming and Ferdman, Michael and Milder, Peter},
+  booktitle={2017 ACM/IEEE 44th Annual International Symposium on Computer Architecture (ISCA)},
+  pages={535--547},
+  year={2017},
+  organization={IEEE}
+}
+
+@article{jouppi2020domain,
+  title={A domain-specific supercomputer for training deep neural networks},
+  author={Jouppi, Norman P and Yoon, Doe Hyun and Kurian, George and Li, Sheng and Patil, Nishant and Laudon, James and Young, Cliff and Patterson, David},
+  journal={Communications of the ACM},
+  volume={63},
+  number={7},
+  pages={67--78},
+  year={2020},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{hegde2021mind,
+  title={Mind mappings: Enabling efficient algorithm-accelerator mapping space search},
+  author={Hegde, Kartik and Tsai, Po-An and Huang, Sitao and Chandra, Vikas and Parashar, Angshuman and Fletcher, Christopher W},
+  booktitle={Proceedings of the 26th ACM International Conference on Architectural Support for Programming Languages and Operating Systems},
+  pages={943--958},
+  year={2021}
+}
+
+@inproceedings{spatial,
+  title={Spatial: A language and compiler for application accelerators},
+  author={Koeplinger, David and Feldman, Matthew and Prabhakar, Raghu and Zhang, Yaqi and Hadjis, Stefan and Fiszel, Ruben and Zhao, Tian and Nardi, Luigi and Pedram, Ardavan and Kozyrakis, Christos and others},
+  booktitle={Proceedings of the 39th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+  pages={296--311},
+  year={2018}
+}
+
+@inproceedings{fleet,
+  title={Fleet: A framework for massively parallel streaming on {FPGAs}},
+  author={Thomas, James and Hanrahan, Pat and Zaharia, Matei},
+  booktitle={Proceedings of the Twenty-Fifth International Conference on Architectural Support for Programming Languages and Operating Systems},
+  pages={639--651},
+  year={2020}
+}
+
+@inproceedings{genesis,
+  title={Genesis: A hardware acceleration framework for genomic data analysis},
+  author={Ham, Tae Jun and Bruns-Smith, David and Sweeney, Brendan and Lee, Yejin and Seo, Seong Hoon and Song, U Gyeong and Oh, Young H and Asanovic, Krste and Lee, Jae W and Wills, Lisa Wu},
+  booktitle={2020 ACM/IEEE 47th Annual International Symposium on Computer Architecture (ISCA)},
+  pages={254--267},
+  year={2020},
+  organization={IEEE}
+}
