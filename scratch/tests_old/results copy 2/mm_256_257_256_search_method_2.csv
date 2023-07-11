@@ -1,2 +1,0 @@
-design_idx,search time (s),objective,original workload,padded workload,fre,throughput (GFLOP/s),cycles,latency(ms),DSP eff,off-chip bytes,bandwidth (GB/s),CTC,DSPs,BRAMs,PEs,SA_dims,sa_sizes
-kernel3_2_1,16.4,latency,"{'i': 256, 'j': 260, 'k': 256}","{'i': 256, 'j': 260}",300,532.46,18979,0.00006,86.66%,1855488,29.33,18.15,5120,2620,128,"(64, 2, 8)","{kernel[]->space_time[3];kernel[]->array_part[64, 130, 16];kernel[]->latency[1, 65];kernel[]->simd[8]}"

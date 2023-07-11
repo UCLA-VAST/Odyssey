@@ -1,0 +1,6 @@
+option solver ipopt;
+reset;
+model /home/suhailb/Projects/odyssey_designs/Odyssey/src/randomized_search/solvers/mm/tmp.mod;
+data /home/suhailb/Projects/odyssey_designs/Odyssey/src/randomized_search/solvers/mm/tmp.dat;
+solve;
+display target,i1,j1,k1,i2,j2,k2;

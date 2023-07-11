@@ -1,3 +1,0 @@
-dim,theoretical_cycles,lowerb_cycles,actual_cycles,is_lower
-512,359_511_771,906_089_472,1_208_039_936,True
-513,360_213_943,907_858_944,1_008_695_808,True

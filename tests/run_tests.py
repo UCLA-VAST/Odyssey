@@ -1,5 +1,7 @@
 import sys
-sys.path.append('./src')
+import os
+prj_path = os.environ['PRJ_PATH']
+sys.path.append(f'{prj_path}/src')
 from utils import *
 import argparse
 import os
@@ -23,7 +25,7 @@ if __name__ == '__main__':
 	num_top_designs = parser.parse_args().num_top_designs
 
 	# load workload data
-	with open(f'{prj_path}/tests/workloads/{workload}.json') as f:
+	with open(f'{prj_path}/tests/{workload}.json') as f:
 		workloads_dict = json.load(f)
 
 	# get first item from workloads_dict
@@ -37,28 +39,33 @@ if __name__ == '__main__':
 			problem_dims = [problem_size[key] for key in problem_size.keys()]
 			problem_dims_str = '_'.join([str(dim) for dim in problem_dims])
 			print(f'workload: {name}, problem size: {problem_dims_str}')
-			# # divisors
-			# print(f'Running divisors for {name} {ps}')
-			# cmd = f'python src/divisors.py        		-w={workload} -p="{ps}" -obj={objective} -a={alpha} -n={num_top_designs}'
-			# os.system(cmd)
+			
+			# divisors
+			print(f'Running divisors for {name} {ps}')
+			cmd = f'python {prj_path}/src/divisor_only/divisors.py        		-w={workload} -p="{ps}" -obj={objective} -a={alpha} -n={num_top_designs}'
+			os.system(cmd)
 
-			# non-divisors
+			# padding_based algorithm
 			print(f'Running non_divisors for {name} {ps}')
-			cmd = f'python src/non_divisors.py        -w={workload} -p="{ps}" -obj={objective} -d="(1,6)" -a={alpha} -n={num_top_designs}   -thr={threshold}'
+			cmd = f'python {prj_path}/src/padding_based/non_divisors.py        -w={workload} -p="{ps}" -obj={objective} -a={alpha} -n={num_top_designs}   -thr={threshold}'
 			os.system(cmd)
 
 			# odyssey
-			# print(f'Running odyssey for {name} {ps}')
-			# cmd = f'python src/odyssey.py             -w={workload} -p="{ps}" -obj={objective} -a={alpha}        --trials=2 -to=10'
-			# os.system(cmd)
+			print(f'Running odyssey for {name} {ps}')
+			cmd = f'python {prj_path}/src/randomized_search/odyssey.py             -w={workload} -p="{ps}" -obj={objective} -a={alpha} --trials=1 -to=10'
+			os.system(cmd)
 
 			# exhausitve
-			# estimated_points = est_num_of_designs(workload, problem_size, 1000)
-			# if estimated_points < 20_000_000_000:
-			# 	# print(f'Running exhaustive for {name} {ps:40} {estimated_points:_}')
-			# 	cmd = f'python src/exhaustive_search.py -w={workload} -p="{ps}" -obj={objective} -a={alpha} -n={num_top_designs}'
-			# 	path = f'{prj_path}/results/{workload}/{problem_dims_str}/design_all_all/{objective}/exhaustive'
-			# 	if not os.path.exists(path) and problem_dims_str=='1024_256_256':
-			# 		print(cmd, estimated_points)
-					# os.system(cmd)
+			estimated_points = est_num_of_designs(workload, problem_size, 1000)
+			if estimated_points < 20_000_000_000:
+				print(f'Running exhaustive for {name} {ps:40} {estimated_points:_}')
+				cmd = f'python {prj_path}/src/exhaustive/exhaustive_search.py -w={workload} -p="{ps}" -obj={objective} -a={alpha} -n={num_top_designs}'
+				path = f'{prj_path}/results/{workload}/{problem_dims_str}/design_all_all/{objective}/exhaustive'
+				if not os.path.exists(path):
+					print(cmd, estimated_points)
+					os.system(cmd)
+			else:
+				print(f'Estimated points: {estimated_points:_}')
+				print(f'Not running exhaustive for {name} {ps:40}')
+
 

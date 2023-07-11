@@ -1,6 +1,0 @@
-param i := 64;
-param j := 256;
-param k := 64;
-param dsp_bound := 8601;
-param bram_bound := 3763;
-param data_w := 32;

@@ -1,2 +1,0 @@
-./mm.sh
-./conv.sh

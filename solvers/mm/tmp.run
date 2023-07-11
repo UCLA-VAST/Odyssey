@@ -1,6 +1,0 @@
-option solver ipopt;
-reset;
-model /home/suhailb/Projects/odyssey/solvers/mm/tmp.mod;
-data /home/suhailb/Projects/odyssey/solvers/mm/tmp.dat;
-solve;
-display target,i1,j1,k1,i2,j2,k2;

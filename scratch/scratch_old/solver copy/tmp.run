@@ -1,6 +1,0 @@
-option solver lgo;
-reset;
-model /home/suhailb/Projects/odyssey/scratch/solver/tmp.mod;
-data /home/suhailb/Projects/odyssey/scratch/solver/tmp.dat;
-solve;
-display target,i_t1,o_t1,r_t1,c_t1,i_t2,o_t2,r_t2,c_t2;
