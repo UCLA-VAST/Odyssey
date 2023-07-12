@@ -1,6 +1,3 @@
-export VIV_VER=2021.2
-export SDA_VER=2021.2
-source with-sdaccel
 export AUTOSA_ROOT=/path/to/autosa
 export PRJ_PATH=$(pwd)
 export PATH="/share/suhailb/Projects/ampl.linux-intel64:$PATH"
@@ -23,5 +20,5 @@ mkdir -p results/all
 
 # cp -r scripts/all/* designs/mod/
 # cp -r scripts/all/* designs/orig/
-conda activate odyssey
+
 echo 'done'

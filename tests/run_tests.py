@@ -51,8 +51,8 @@ if __name__ == '__main__':
 			os.system(cmd)
 
 			# genetic-mp algorithm
-			print(f'Running odyssey for {name} {ps}')
-			cmd = f'python {prj_path}/src/randomized_methods/randomized_methods.py        -w={workload} -p="{ps}" -obj={objective} -a={alpha} --trials=1 -to=10'
+			print(f'Running genetic-mp for {name} {ps}')
+			cmd = f'python {prj_path}/src/randomized_methods/randomized_methods.py        -w={workload} -p="{ps}" -obj={objective} -a={alpha} --trials=1 -to=1'
 			os.system(cmd)
 
 			# exhausitve

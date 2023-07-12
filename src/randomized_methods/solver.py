@@ -132,7 +132,11 @@ def off_chip_solver_gemm(search_task, cst, prj_path, fixed_params=None, save=0):
     
     # Call the solver    
     cmd = ["ampl", f"{tmpdirname}/tmp.run"]
-    pipe = Popen(cmd, stdout=PIPE, stderr=PIPE)
+    try:
+        pipe = Popen(cmd, stdout=PIPE, stderr=PIPE)
+    except FileNotFoundError:
+        print("Please install AMPL and add it to the PATH.")
+        return None
     text = pipe.communicate()[0].decode('ascii')
     # Collect the results
     text = text.split('\n')
@@ -302,7 +306,11 @@ def off_chip_solver_conv(search_task, cst, prj_path, fixed_params=None, save=0):
     
     # Call the solver    
     cmd = ["ampl", f"{tmpdirname}/tmp.run"]
-    pipe = Popen(cmd, stdout=PIPE, stderr=PIPE)
+    try:
+        pipe = Popen(cmd, stdout=PIPE, stderr=PIPE)
+    except FileNotFoundError:
+        print("Please install AMPL and add it to the PATH.")
+        return None
     text = pipe.communicate()[0].decode('ascii')
 
     # Collect the results
