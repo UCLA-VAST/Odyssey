@@ -1,6 +1,6 @@
 option solver ipopt;
 reset;
-model /home/suhailb/Projects/odyssey_designs/Odyssey/src/randomized_methods/solvers/conv/tmp.mod;
-data /home/suhailb/Projects/odyssey_designs/Odyssey/src/randomized_methods/solvers/conv/tmp.dat;
+model /home/suhail/prj_test/Odyssey/src/randomized_methods/solvers/conv/tmp.mod;
+data /home/suhail/prj_test/Odyssey/src/randomized_methods/solvers/conv/tmp.dat;
 solve;
 display target,i1,o1,r1,c1,i2,o2,r2,c2;

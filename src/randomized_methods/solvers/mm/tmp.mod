@@ -19,10 +19,10 @@ var ck2 integer >= 1, <= k;
 var ck3 integer >= 1, <= k;
 minimize target:
 	(i*cj1*k+ci1*j*k+i*j)-
-	(ci2*k2);
+	(cj2*k1);
 
 subject to DSP_cst:
-	0 <= ci2*1*k2*5 <= dsp_bound;
+	0 <= cj2*k1*5 <= dsp_bound;
 
 subject to BRAM_cst:
 	ceil(data_w/18)*ceil(i1*k1/1024)*2+
@@ -49,7 +49,4 @@ subject to ck2_cst:
 
 subject to ck3_cst:
 	k2 = ck3*2;
-
-subject to latency_hiding_cst:
-	i2*j2 >= 8*k2;
 

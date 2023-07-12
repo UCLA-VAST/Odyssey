@@ -712,7 +712,7 @@ if __name__ == '__main__':
 
 	resource_limits = get_resource_limits('u250')
 
-	results_dir = prj_path + f'/results/{workload}/{problem_dims_str}/design_{permutation}_{dataflow}/{objective}/non_divisors'
+	results_dir = prj_path + f'/results/{workload}/{problem_dims_str}/design_{permutation}_{dataflow}/{objective}/padding_based'
 	if not os.path.exists(results_dir):
 		os.makedirs(results_dir + '/results')
 		os.makedirs(results_dir + '/logs')
@@ -751,7 +751,7 @@ if __name__ == '__main__':
 		}
 		f.write(json.dumps(info))
 	import shutil
-	new_file_name = f'{workload}_non_divisors_{problem_dims_str}_design_{permutation}_{dataflow}_{objective}_top_{num_top_results}_alpha_{alpha}_thr_{threshold}'
+	new_file_name = f'{workload}_padding_based_{problem_dims_str}_design_{permutation}_{dataflow}_{objective}_top_{num_top_results}_alpha_{alpha}_thr_{threshold}'
 	results_dir = prj_path + f'/results/all/'
 	# copy results_file and log_file to new_file_name
 	shutil.copy(results_file, results_dir + f'{new_file_name}.csv')

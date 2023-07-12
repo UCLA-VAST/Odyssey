@@ -60,8 +60,8 @@ def get_data(workload, problem_dims_str, alpha, num_top_results, threshold, obje
 	else:
 		print(f'{results_path}{search_method}/results/ does not exist')
 
-	# non_divisors
-	search_method = 'non_divisors'
+	# padding_based
+	search_method = 'padding_based'
 	cycles_dict[search_method] = 0
 	throughput_dict[search_method] = 0
 	runtime_dict[search_method] = 0
@@ -116,8 +116,8 @@ def get_data(workload, problem_dims_str, alpha, num_top_results, threshold, obje
 	else:
 		print(f'{results_path}{search_method}/results/ does not exist')
 	
-	# odyssey
-	search_method = 'odyssey'
+	# genetic_mp
+	search_method = 'genetic_mp'
 	cycles_dict[search_method] = 0
 	throughput_dict[search_method] = 0
 	runtime_dict[search_method] = 0

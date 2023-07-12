@@ -8,3 +8,4 @@ scratch
 *.pdf
 *.log
 *.csv
+.python-version
