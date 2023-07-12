@@ -7,7 +7,7 @@ from math import prod
 import numpy as np
 prj_path = os.environ["PRJ_PATH"]
 import sys
-sys.path.append(f'{prj_path}/src/randomized_search')
+sys.path.append(f'{prj_path}/src/randomized_methods')
 from design import Design
 from math import log2, sqrt
 from tqdm import tqdm

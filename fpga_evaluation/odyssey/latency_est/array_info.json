@@ -1,0 +1,17 @@
+{
+	"A":	{
+		"n_lane":	16,
+		"ele_type":	"float",
+		"ele_size":	4
+	},
+	"B":	{
+		"n_lane":	16,
+		"ele_type":	"float",
+		"ele_size":	4
+	},
+	"C":	{
+		"n_lane":	16,
+		"ele_type":	"float",
+		"ele_size":	4
+	}
+}

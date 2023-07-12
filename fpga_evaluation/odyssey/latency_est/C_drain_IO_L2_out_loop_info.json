@@ -1,0 +1,154 @@
+{
+	"module_name":	"C_drain_IO_L2_out",
+	"module_prop":	{
+		"double_buffer":	0,
+		"in":	0
+	},
+	"loop":	{
+		"loop_info":	{
+			"iter":	"c0",
+			"lb":	"0",
+			"ub":	"7",
+			"stride":	"1"
+		},
+		"child":	{
+			"loop":	{
+				"loop_info":	{
+					"iter":	"c1",
+					"lb":	"0",
+					"ub":	"7",
+					"stride":	"1"
+				},
+				"child":	{
+					"mark":	{
+						"mark_name":	"array",
+						"child":	{
+							"mark":	{
+								"mark_name":	"io_L3",
+								"child":	{
+									"loop":	{
+										"loop_info":	{
+											"iter":	"c3",
+											"lb":	"p0",
+											"ub":	"4",
+											"stride":	"1"
+										},
+										"child":	{
+											"mark":	{
+												"mark_name":	"io_L2",
+												"child":	{
+													"if":	{
+														"then":	{
+															"loop":	{
+																"loop_info":	{
+																	"iter":	"c4",
+																	"lb":	"0",
+																	"ub":	"42",
+																	"stride":	"1"
+																},
+																"child":	{
+																	"mark":	{
+																		"mark_name":	"io_L1",
+																		"child":	{
+																			"loop":	{
+																				"loop_info":	{
+																					"iter":	"c5",
+																					"lb":	"0",
+																					"ub":	"2",
+																					"stride":	"1"
+																				},
+																				"child":	{
+																					"mark":	{
+																						"mark_name":	"access_coalesce",
+																						"child":	{
+																							"loop":	{
+																								"loop_info":	{
+																									"iter":	"c6",
+																									"lb":	"0",
+																									"ub":	"12",
+																									"stride":	"1"
+																								},
+																								"child":	{
+																									"mark":	{
+																										"mark_name":	"hls_pipeline",
+																										"child":	{
+																											"user":	{
+																												"user_expr":	"out_trans.fifo_C_drain_local.fifo_C_drain.0.2.2.6.39(c0, c1, 15, p0, c4, 129 * c0 + 3 * c4 + c5, 26 * p0 + 130 * c1 + 2 * c6)"
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"else":	{
+															"loop":	{
+																"loop_info":	{
+																	"iter":	"c4",
+																	"lb":	"0",
+																	"ub":	"42",
+																	"stride":	"1"
+																},
+																"child":	{
+																	"mark":	{
+																		"mark_name":	"io_L1",
+																		"child":	{
+																			"loop":	{
+																				"loop_info":	{
+																					"iter":	"c5",
+																					"lb":	"0",
+																					"ub":	"2",
+																					"stride":	"1"
+																				},
+																				"child":	{
+																					"mark":	{
+																						"mark_name":	"access_coalesce",
+																						"child":	{
+																							"loop":	{
+																								"loop_info":	{
+																									"iter":	"c6",
+																									"lb":	"0",
+																									"ub":	"12",
+																									"stride":	"1"
+																								},
+																								"child":	{
+																									"mark":	{
+																										"mark_name":	"hls_pipeline",
+																										"child":	{
+																											"user":	{
+																												"user_expr":	"out_trans.fifo_C_drain.fifo_C_drain.0.2.2.6.39(c0, c1, 15, c3, c4, 129 * c0 + 3 * c4 + c5, 130 * c1 + 26 * c3 + 2 * c6)"
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

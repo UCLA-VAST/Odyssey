@@ -1,0 +1,45 @@
+{
+	"module_name":	"C_drain_IO_L1_out",
+	"module_prop":	{
+		"double_buffer":	0,
+		"in":	0
+	},
+	"loop":	{
+		"loop_info":	{
+			"iter":	"c0",
+			"lb":	"0",
+			"ub":	"7",
+			"stride":	"1"
+		},
+		"child":	{
+			"loop":	{
+				"loop_info":	{
+					"iter":	"c1",
+					"lb":	"0",
+					"ub":	"7",
+					"stride":	"1"
+				},
+				"child":	{
+					"mark":	{
+						"mark_name":	"array",
+						"child":	{
+							"mark":	{
+								"mark_name":	"io_L3",
+								"child":	{
+									"mark":	{
+										"mark_name":	"io_L2",
+										"child":	{
+											"user":	{
+												"user_expr":	"io_module.intra_inter.0.0()"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

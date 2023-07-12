@@ -1,0 +1,66 @@
+{
+	"module_name":	"B_IO_L2_in_boundary",
+	"module_prop":	{
+		"double_buffer":	1,
+		"in":	1
+	},
+	"block":	{
+		"child":	[{
+				"loop":	{
+					"loop_info":	{
+						"iter":	"c0",
+						"lb":	"0",
+						"ub":	"15",
+						"stride":	"1"
+					},
+					"child":	{
+						"loop":	{
+							"loop_info":	{
+								"iter":	"c1",
+								"lb":	"0",
+								"ub":	"7",
+								"stride":	"1"
+							},
+							"child":	{
+								"loop":	{
+									"loop_info":	{
+										"iter":	"c2",
+										"lb":	"0",
+										"ub":	"7",
+										"stride":	"1"
+									},
+									"child":	{
+										"mark":	{
+											"mark_name":	"array",
+											"child":	{
+												"mark":	{
+													"mark_name":	"io_L3",
+													"child":	{
+														"block":	{
+															"child":	[{
+																	"user":	{
+																		"user_expr":	"io_module.inter_intra.1.1()"
+																	}
+																}, {
+																	"user":	{
+																		"user_expr":	"io_module.state_handle()"
+																	}
+																}]
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}, {
+				"user":	{
+					"user_expr":	"io_module.intra_trans()"
+				}
+			}]
+	}
+}

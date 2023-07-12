@@ -46,13 +46,13 @@ if __name__ == '__main__':
 			os.system(cmd)
 
 			# padding_based algorithm
-			print(f'Running non_divisors for {name} {ps}')
-			cmd = f'python {prj_path}/src/padding_based/non_divisors.py        -w={workload} -p="{ps}" -obj={objective} -a={alpha} -n={num_top_designs}   -thr={threshold}'
+			print(f'Running padding-based algorithm for {name} {ps}')
+			cmd = f'python {prj_path}/src/padding_based/padding_based.py       -w={workload} -p="{ps}" -obj={objective} -a={alpha} -n={num_top_designs}   -thr={threshold}'
 			os.system(cmd)
 
-			# odyssey
+			# genetic-mp algorithm
 			print(f'Running odyssey for {name} {ps}')
-			cmd = f'python {prj_path}/src/randomized_search/odyssey.py             -w={workload} -p="{ps}" -obj={objective} -a={alpha} --trials=1 -to=10'
+			cmd = f'python {prj_path}/src/randomized_methods/randomized_methods.py        -w={workload} -p="{ps}" -obj={objective} -a={alpha} --trials=1 -to=10'
 			os.system(cmd)
 
 			# exhausitve

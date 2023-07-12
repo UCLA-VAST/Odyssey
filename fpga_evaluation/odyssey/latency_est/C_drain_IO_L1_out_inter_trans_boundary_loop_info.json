@@ -1,0 +1,59 @@
+{
+	"module_name":	"C_drain_IO_L1_out_inter_trans_boundary",
+	"module_prop":	{
+		"double_buffer":	0,
+		"in":	0
+	},
+	"loop":	{
+		"loop_info":	{
+			"iter":	"c4",
+			"lb":	"p1",
+			"ub":	"42",
+			"stride":	"1"
+		},
+		"child":	{
+			"if":	{
+				"then":	{
+					"mark":	{
+						"mark_name":	"io_L1",
+						"child":	{
+							"loop":	{
+								"loop_info":	{
+									"iter":	"c5",
+									"lb":	"0",
+									"ub":	"2",
+									"stride":	"1"
+								},
+								"child":	{
+									"mark":	{
+										"mark_name":	"access_coalesce",
+										"child":	{
+											"loop":	{
+												"loop_info":	{
+													"iter":	"c6",
+													"lb":	"0",
+													"ub":	"12",
+													"stride":	"1"
+												},
+												"child":	{
+													"mark":	{
+														"mark_name":	"hls_pipeline",
+														"child":	{
+															"user":	{
+																"user_expr":	"out_trans_boundary.fifo_C_drain.fifo_C_drain.1.2.2.6.39(c0, c1, 15, p0, p1, 3 * p1 + 129 * c0 + c5, 26 * p0 + 130 * c1 + 2 * c6)"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

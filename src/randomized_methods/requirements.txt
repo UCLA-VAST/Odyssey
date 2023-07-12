@@ -1,0 +1,17 @@
+bayesian-optimization==1.1.0
+certifi==2021.10.8
+dill
+joblib
+mkl-fft==1.3.1
+mkl-random 
+mkl-service==2.4.0
+multiprocess 
+numpy 
+pathos 
+pox 
+ppft 
+scikit-learn 
+scipy 
+six 
+threadpoolctl 
+xgboost==1.3.3

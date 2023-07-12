@@ -1,0 +1,104 @@
+{
+	"module_name":	"C_drain_IO_L2_out_boundary",
+	"module_prop":	{
+		"double_buffer":	0,
+		"in":	0
+	},
+	"loop":	{
+		"loop_info":	{
+			"iter":	"c0",
+			"lb":	"0",
+			"ub":	"15",
+			"stride":	"1"
+		},
+		"child":	{
+			"loop":	{
+				"loop_info":	{
+					"iter":	"c1",
+					"lb":	"0",
+					"ub":	"7",
+					"stride":	"1"
+				},
+				"child":	{
+					"mark":	{
+						"mark_name":	"array",
+						"child":	{
+							"mark":	{
+								"mark_name":	"io_L3",
+								"child":	{
+									"loop":	{
+										"loop_info":	{
+											"iter":	"c3",
+											"lb":	"p0",
+											"ub":	"3",
+											"stride":	"1"
+										},
+										"child":	{
+											"if":	{
+												"then":	{
+													"mark":	{
+														"mark_name":	"io_L2",
+														"child":	{
+															"loop":	{
+																"loop_info":	{
+																	"iter":	"c4",
+																	"lb":	"0",
+																	"ub":	"31",
+																	"stride":	"1"
+																},
+																"child":	{
+																	"mark":	{
+																		"mark_name":	"io_L1",
+																		"child":	{
+																			"loop":	{
+																				"loop_info":	{
+																					"iter":	"c5",
+																					"lb":	"0",
+																					"ub":	"1",
+																					"stride":	"1"
+																				},
+																				"child":	{
+																					"mark":	{
+																						"mark_name":	"access_coalesce",
+																						"child":	{
+																							"loop":	{
+																								"loop_info":	{
+																									"iter":	"c6",
+																									"lb":	"0",
+																									"ub":	"7",
+																									"stride":	"1"
+																								},
+																								"child":	{
+																									"mark":	{
+																										"mark_name":	"hls_pipeline",
+																										"child":	{
+																											"user":	{
+																												"user_expr":	"out_trans_boundary.fifo_C_drain_local.fifo_C_drain.0.4.4.6.16(c0, c1, 7, p0, c4, 64 * c0 + 2 * c4 + c5, 32 * p0 + 128 * c1 + 4 * c6)"
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

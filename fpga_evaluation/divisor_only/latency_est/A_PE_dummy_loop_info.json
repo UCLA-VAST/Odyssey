@@ -1,0 +1,95 @@
+{
+	"module_name":	"A_PE_dummy",
+	"module_prop":	{
+		"double_buffer":	0,
+		"in":	0
+	},
+	"loop":	{
+		"loop_info":	{
+			"iter":	"c0",
+			"lb":	"0",
+			"ub":	"15",
+			"stride":	"1"
+		},
+		"child":	{
+			"loop":	{
+				"loop_info":	{
+					"iter":	"c1",
+					"lb":	"0",
+					"ub":	"7",
+					"stride":	"1"
+				},
+				"child":	{
+					"loop":	{
+						"loop_info":	{
+							"iter":	"c2",
+							"lb":	"0",
+							"ub":	"7",
+							"stride":	"1"
+						},
+						"child":	{
+							"mark":	{
+								"mark_name":	"array",
+								"child":	{
+									"mark":	{
+										"mark_name":	"pe",
+										"child":	{
+											"loop":	{
+												"loop_info":	{
+													"iter":	"c5",
+													"lb":	"0",
+													"ub":	"15",
+													"stride":	"1"
+												},
+												"child":	{
+													"mark":	{
+														"mark_name":	"latency",
+														"child":	{
+															"loop":	{
+																"loop_info":	{
+																	"iter":	"c6",
+																	"lb":	"0",
+																	"ub":	"31",
+																	"stride":	"1"
+																},
+																"child":	{
+																	"mark":	{
+																		"mark_name":	"latency",
+																		"child":	{
+																			"loop":	{
+																				"loop_info":	{
+																					"iter":	"c7",
+																					"lb":	"0",
+																					"ub":	"1",
+																					"stride":	"1"
+																				},
+																				"child":	{
+																					"mark":	{
+																						"mark_name":	"hls_pipeline",
+																						"child":	{
+																							"user":	{
+																								"user_expr":	"in_dummy.fifo_A.8.1(c0, c1, c2, p0, p1, c5, c6, c7, 2 * p0 + 64 * c0 + c7, 128 * c2 + 8 * c5)"
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

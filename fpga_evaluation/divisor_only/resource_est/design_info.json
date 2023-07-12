@@ -1,0 +1,264 @@
+{
+	"kernel_id":	3,
+	"modules":	{
+		"A_IO_L3_in":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	16,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	1,
+			"local_buffers":	[]
+		},
+		"A_IO_L3_in_serialize":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	16,
+			"ele_type":	"float",
+			"ele_size":	4
+		},
+		"A_IO_L2_in_intra_trans":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"A_IO_L2_in_inter_trans":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"A_IO_L2_in_inter_trans_boundary":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"A_IO_L2_in":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0,
+			"local_buffers":	[{
+					"buffer_name":	"local_A_ping",
+					"port_width":	64,
+					"buffer_depth":	16,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}, {
+					"buffer_name":	"local_A_pong",
+					"port_width":	64,
+					"buffer_depth":	16,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}]
+		},
+		"A_IO_L2_in_boundary":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0,
+			"local_buffers":	[{
+					"buffer_name":	"local_A_ping",
+					"port_width":	64,
+					"buffer_depth":	16,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}, {
+					"buffer_name":	"local_A_pong",
+					"port_width":	64,
+					"buffer_depth":	16,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}]
+		},
+		"B_IO_L3_in":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	16,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	1,
+			"local_buffers":	[]
+		},
+		"B_IO_L3_in_serialize":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	16,
+			"ele_type":	"float",
+			"ele_size":	4
+		},
+		"B_IO_L2_in_intra_trans":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"B_IO_L2_in_inter_trans":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"B_IO_L2_in_inter_trans_boundary":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"B_IO_L2_in":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0,
+			"local_buffers":	[{
+					"buffer_name":	"local_B_ping",
+					"port_width":	64,
+					"buffer_depth":	256,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}, {
+					"buffer_name":	"local_B_pong",
+					"port_width":	64,
+					"buffer_depth":	256,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}]
+		},
+		"B_IO_L2_in_boundary":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	8,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0,
+			"local_buffers":	[{
+					"buffer_name":	"local_B_ping",
+					"port_width":	64,
+					"buffer_depth":	256,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}, {
+					"buffer_name":	"local_B_pong",
+					"port_width":	64,
+					"buffer_depth":	256,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}]
+		},
+		"PE":	{
+			"unroll":	8,
+			"latency_hide_len":	64,
+			"fifo_lanes":	[8, 8, 1, 1],
+			"local_buffers":	[{
+					"buffer_name":	"local_A",
+					"port_width":	4,
+					"buffer_depth":	8,
+					"partition_number":	8,
+					"mem_type":	"FF"
+				}, {
+					"buffer_name":	"local_B",
+					"port_width":	4,
+					"buffer_depth":	8,
+					"partition_number":	8,
+					"mem_type":	"FF"
+				}, {
+					"buffer_name":	"local_C",
+					"port_width":	4,
+					"buffer_depth":	64,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}]
+		},
+		"A_PE_dummy_in":	{
+			"unroll":	8
+		},
+		"B_PE_dummy_in":	{
+			"unroll":	8
+		},
+		"C_drain_IO_L1_out_intra_trans":	{
+			"data_pack_inter":	4,
+			"data_pack_intra":	1,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"C_drain_IO_L1_out_inter_trans":	{
+			"data_pack_inter":	4,
+			"data_pack_intra":	1,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"C_drain_IO_L1_out_inter_trans_boundary":	{
+			"data_pack_inter":	4,
+			"data_pack_intra":	1,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0
+		},
+		"C_drain_IO_L1_out":	{
+			"data_pack_inter":	4,
+			"data_pack_intra":	1,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0,
+			"local_buffers":	[{
+					"buffer_name":	"local_C",
+					"port_width":	16,
+					"buffer_depth":	16,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}]
+		},
+		"C_drain_IO_L1_out_boundary":	{
+			"data_pack_inter":	4,
+			"data_pack_intra":	1,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0,
+			"local_buffers":	[{
+					"buffer_name":	"local_C",
+					"port_width":	16,
+					"buffer_depth":	16,
+					"partition_number":	1,
+					"mem_type":	"BRAM"
+				}]
+		},
+		"C_drain_IO_L2_out":	{
+			"data_pack_inter":	4,
+			"data_pack_intra":	4,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0,
+			"local_buffers":	[]
+		},
+		"C_drain_IO_L2_out_boundary":	{
+			"data_pack_inter":	4,
+			"data_pack_intra":	4,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	0,
+			"local_buffers":	[]
+		},
+		"C_drain_IO_L3_out":	{
+			"data_pack_inter":	4,
+			"data_pack_intra":	4,
+			"ele_type":	"float",
+			"ele_size":	4,
+			"access_mem":	1,
+			"local_buffers":	[]
+		},
+		"C_drain_IO_L3_out_serialize":	{
+			"data_pack_inter":	16,
+			"data_pack_intra":	4,
+			"ele_type":	"float",
+			"ele_size":	4
+		}
+	}
+}

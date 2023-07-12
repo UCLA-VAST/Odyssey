@@ -5,7 +5,7 @@ export AUTOSA_ROOT=/path/to/autosa
 export PRJ_PATH=$(pwd)
 export PATH="/share/suhailb/Projects/ampl.linux-intel64:$PATH"
 
-# mkdir designs/mod_logs
+mkdir -p results/all
 # mkdir designs/orig_logs
 # if designs/mod does not exist, create it
 # if [ ! -d "designs/mod" ]; then

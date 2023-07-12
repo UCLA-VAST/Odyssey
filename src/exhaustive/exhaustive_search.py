@@ -452,25 +452,3 @@ if __name__ == '__main__':
 	# copy results_file and log_file to new_file_name
 	shutil.copy(results_file, results_dir + f'{new_file_name}.csv')
 	shutil.copy(log_file, results_dir + f'{new_file_name}.json')
-# 	# u250_info = json.load(open(prj_path + '/data/cst/u250.json'))
-# 	# resource_limits = {'DSP': u250_info['DSP']['total']*u250_info['DSP']['ratio'], 'BRAM18K': u250_info['BRAM18K']['total']*u250_info['BRAM18K']['ratio']}
-# 	# design = designs[7]
-# 	# design_name = design.strip('.json')
-# 	# file_path = 'tmp/designs/register/' + design_name
-# 	# file_path = file_path.replace('/', '.')
-# 	# perf_model = importlib.import_module(file_path)
-# 	# params = {'i': 64, 'o': 64, 'r': 66, 'c': 64, 'p': 3, 'q': 3, 'i_t1': 64, 'o_t1': 64, 'r_t1': 66, 'c_t1': 16, 'i_t2': 8, 'o_t2': 8, 'r_t2': 3, 'c_t2': 4, 'p14': 8, 'p15': 4, 'p16': 4, 'p17': 16}
-# 	# if not perf_model.bound_check(params):
-# 	# 	print('params out of bound')
-# 	# 	exit()
-# 	# result = {}
-# 	# result['resources'] = perf_model.est_resource(params)
-# 	# if result['resources'][0]['DSP'] > resource_limits['DSP'] or result['resources'][0]['BRAM18K'] > resource_limits['BRAM18K']:
-# 	# 	print('resource out of bound')
-# 	# 	exit()
-# 	# cycles = perf_model.est_latency(params)[0]
-# 	# print(cycles)
-# 	# candidates = [(params['i_t1'], params['o_t1'], params['r_t1'], params['c_t1'])]
-# 	# top_results = search_conv(params['i'], params['o'], params['r'], params['c'], params['p'], params['q'], 0, candidates, design, resource_limits, num_top_results, None, None, workload)
-# 	# print(top_results[0]['cycles'][0])
-# 	# exit()

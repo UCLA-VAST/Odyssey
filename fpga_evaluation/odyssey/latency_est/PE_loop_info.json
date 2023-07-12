@@ -1,0 +1,160 @@
+{
+	"module_name":	"PE",
+	"module_prop":	{
+		"double_buffer":	0,
+		"in":	-1
+	},
+	"loop":	{
+		"loop_info":	{
+			"iter":	"c0",
+			"lb":	"0",
+			"ub":	"7",
+			"stride":	"1"
+		},
+		"child":	{
+			"loop":	{
+				"loop_info":	{
+					"iter":	"c1",
+					"lb":	"0",
+					"ub":	"7",
+					"stride":	"1"
+				},
+				"child":	{
+					"loop":	{
+						"loop_info":	{
+							"iter":	"c2",
+							"lb":	"0",
+							"ub":	"15",
+							"stride":	"1"
+						},
+						"child":	{
+							"mark":	{
+								"mark_name":	"array",
+								"child":	{
+									"mark":	{
+										"mark_name":	"pe",
+										"child":	{
+											"loop":	{
+												"loop_info":	{
+													"iter":	"c5",
+													"lb":	"0",
+													"ub":	"7",
+													"stride":	"1"
+												},
+												"child":	{
+													"mark":	{
+														"mark_name":	"latency",
+														"child":	{
+															"loop":	{
+																"loop_info":	{
+																	"iter":	"c6",
+																	"lb":	"0",
+																	"ub":	"25",
+																	"stride":	"1"
+																},
+																"child":	{
+																	"mark":	{
+																		"mark_name":	"latency",
+																		"child":	{
+																			"loop":	{
+																				"loop_info":	{
+																					"iter":	"c7",
+																					"lb":	"0",
+																					"ub":	"2",
+																					"stride":	"1"
+																				},
+																				"child":	{
+																					"mark":	{
+																						"mark_name":	"hls_pipeline",
+																						"child":	{
+																							"block":	{
+																								"child":	[{
+																										"user":	{
+																											"user_expr":	"in.fifo_A.8.1(c0, c1, c2, p0, p1, c5, c6, c7, 3 * p0 + 129 * c0 + c7, 64 * c2 + 8 * c5)"
+																										}
+																									}, {
+																										"user":	{
+																											"user_expr":	"in.fifo_B.8.1(c0, c1, c2, p0, p1, c5, c6, c7, 26 * p1 + 130 * c1 + c6, 64 * c2 + 8 * c5)"
+																										}
+																									}, {
+																										"mark":	{
+																											"mark_name":	"simd",
+																											"child":	{
+																												"block":	{
+																													"child":	[{
+																															"if":	{
+																																"then":	{
+																																	"mark":	{
+																																		"mark_name":	"hls_unroll",
+																																		"child":	{
+																																			"user":	{
+																																				"user_expr":	"S_0(3 * p0 + 129 * c0 + c7, 26 * p1 + 130 * c1 + c6)"
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}, {
+																															"loop":	{
+																																"loop_info":	{
+																																	"iter":	"c8",
+																																	"lb":	"0",
+																																	"ub":	"7",
+																																	"stride":	"1"
+																																},
+																																"child":	{
+																																	"mark":	{
+																																		"mark_name":	"hls_unroll",
+																																		"child":	{
+																																			"user":	{
+																																				"user_expr":	"S_1(3 * p0 + 129 * c0 + c7, 26 * p1 + 130 * c1 + c6, 64 * c2 + 8 * c5 + c8)"
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}]
+																												}
+																											}
+																										}
+																									}, {
+																										"if":	{
+																											"then":	{
+																												"user":	{
+																													"user_expr":	"out.fifo_C_drain.1.1(c0, c1, 15, p0, p1, 7, c6, c7, 3 * p0 + 129 * c0 + c7, 26 * p1 + 130 * c1 + c6)"
+																												}
+																											}
+																										}
+																									}, {
+																										"user":	{
+																											"user_expr":	"out.fifo_B.8.1(c0, c1, c2, p0, p1, c5, c6, c7, 26 * p1 + 130 * c1 + c6, 64 * c2 + 8 * c5)"
+																										}
+																									}, {
+																										"user":	{
+																											"user_expr":	"out.fifo_A.8.1(c0, c1, c2, p0, p1, c5, c6, c7, 3 * p0 + 129 * c0 + c7, 64 * c2 + 8 * c5)"
+																										}
+																									}]
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
