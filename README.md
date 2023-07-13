@@ -56,3 +56,9 @@ If you find any of the ideas/codes useful for your research, please cite our pap
         booktitle={2023 60th ACM/IEEE Design Automation Conference (DAC)},
         year={2023}
     }
+	@inproceedings{basalamadac2023,
+        title={A Comprehensive Automated Exploration Framework for Systolic Array Designs},
+        author={Basalama, Suhail and Wang, Jia and Cong, Jason},
+        booktitle={2023 60th ACM/IEEE Design Automation Conference (DAC)},
+        year={2023}
+    }
