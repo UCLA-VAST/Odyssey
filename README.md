@@ -5,7 +5,7 @@
 + Suhail Basalama, Jie Wang, Jason Cong. [A Comprehensive Automated Exploration Framework for Systolic Array Designs]. In DAC, 2023.
 
 ## About
-This repo contains the source code of Odyssey, an automated framework incorporating a hypbrid genetic-mathematical programming search method, a padding-based search algorithm, and other randomized search methods. It can be used to explore the huge design space of systolic arrays. The framework is tested using the open-source [AutoSA framework](https://github.com/UCLA-VAST/AutoSA), but the methodology of our paper is applicable for other systolic array designs.
+This repo contains the source code of Odyssey, an automated framework incorporating a hyprid genetic-mathematical programming search method, a padding-based search algorithm, and other randomized search methods. It can be used to explore the huge design space of systolic arrays. The framework is tested using the open-source [AutoSA framework](https://github.com/UCLA-VAST/AutoSA), but the methodology of our paper is applicable for other systolic array designs.
 
 
 ## Content
@@ -15,8 +15,11 @@ This repo contains the source code of Odyssey, an automated framework incorporat
 
 
 ## Requirements and Dependencies
+The hybrid genetic/mathematical-programming method requires the installation of the [ampl solver](https://ampl.com/products/solvers/all-solvers-for-ampl/).
 
-### Requirements
+All other dependencies are python packages found in the requirement.txt
+
+<!-- ### Requirements -->
 
 <!-- 
 
@@ -36,6 +39,19 @@ The project file structure is as below:
 
 ## Running the Project
 
+To perform the tests, run the python 'run_tests.py' script under the 'tests' directory. For example:
+````bash
+source env.sh
+cd tests
+python run_tests.py --workload=mm
+````
+To test other problem sizes, please add your tests to a json file similar to 'tests/mm.json', and rerun the previous commands.
+
+<!-- ````bash
+source env.sh
+cd tests
+python run_tests.py --workload=mm -->
+````
 <!-- The `src/config.py` contains all the tunable parameters of the project. The current configuration runs the trainer in regression mode with some pre-defined hyper parameters. If you want to change the modes of running, please edit this file.
 
 After setting the configurations, run the following command to execute the project:
@@ -52,13 +68,13 @@ cd dse_database
 python3 -W ignore graph-gen.py ## modify inside of __main__ with your desired kernels
 ````
 
-
+-->
 ## Citation
 If you find any of the ideas/codes useful for your research, please cite our paper:
 
-	@inproceedings{sohrabizadeh2021gnn,
-        title={Automated Accelerator Optimization Aided by Graph Neural Networks},
-        author={Sohrabizadeh, Atefeh and Bai, Yunsheng and Sun, Yizhou and Cong, Jason},
-        booktitle={2022 59th ACM/IEEE Design Automation Conference (DAC)},
-        year={2022}
-    } -->
+	@inproceedings{basalamadac2023,
+        title={A Comprehensive Automated Exploration Framework for Systolic Array Designs},
+        author={Basalama, Suhail and Wang, Jia and Cong, Jason},
+        booktitle={2023 60th ACM/IEEE Design Automation Conference (DAC)},
+        year={2023}
+    }
